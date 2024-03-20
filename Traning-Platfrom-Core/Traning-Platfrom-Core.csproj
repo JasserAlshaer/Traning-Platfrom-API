@@ -9,9 +9,6 @@
 
 	<ItemGroup>
 		<Folder Include="Helper\" />
-		<Folder Include="IRepositaries\" />
-		<Folder Include="IServices\" />
-		<Folder Include="Dtos\" />
 	</ItemGroup>
 
 	<ItemGroup>

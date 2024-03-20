@@ -27,6 +27,7 @@ namespace Traning_Platfrom_Core.Entity.Client
         public bool IsHaveDrivingLicense { get; set; }
         public string ResumeFilePath { get; set; }
         public string ProfileImagePath { get; set; }
+        public bool IsProfileCompleted { get; set; }
         public virtual List<EducationHistory> EducationHistories { get; set; }
         public virtual List<Experience> Experiences { get; set; }
         public virtual List<JobApplication> JobApplications { get; set; }
