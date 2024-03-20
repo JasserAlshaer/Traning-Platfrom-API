@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Traning_Platfrom_Core.Dtos.Organization
+namespace Traning_Platfrom_Core.Dtos.OrganizationDTO
 {
     public class OrganizationDTO
     {

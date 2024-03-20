@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Traning_Platfrom_Core.Dtos.JobSeeker;
 using Traning_Platfrom_Core.Dtos.Login;
 using Traning_Platfrom_Core.Dtos.Logout;
-using Traning_Platfrom_Core.Dtos.Organization;
+using Traning_Platfrom_Core.Dtos.OrganizationDTO;
 using Traning_Platfrom_Core.Dtos.User;
 using Traning_Platfrom_Core.IRepositaries;
 

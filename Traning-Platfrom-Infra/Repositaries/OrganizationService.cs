@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Traning_Platfrom_Core.Dtos.JobApplication;
 using Traning_Platfrom_Core.Dtos.JobInterview;
 using Traning_Platfrom_Core.Dtos.JobOpportunity;
-using Traning_Platfrom_Core.Dtos.Organization;
+using Traning_Platfrom_Core.Dtos.OrganizationDTO;
 using Traning_Platfrom_Core.IRepositaries;
 
 namespace Traning_Platfrom_Infra.Repositaries

@@ -10,7 +10,7 @@ namespace Traning_Platfrom_Core.Entity.Shared
     {
         public int Id { get; set; }
         public DateTime CreationDate { get; set; }
-        public DateTime LastModifiedDate { get; set; }
+        public DateTime? LastModifiedDate { get; set; }
         public bool IsDeleted { get; set; } 
     }
 }

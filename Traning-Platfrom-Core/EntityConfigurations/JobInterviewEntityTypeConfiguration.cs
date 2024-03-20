@@ -18,6 +18,7 @@ namespace Traning_Platfrom_Core.EntityConfigurations
             builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x=>x.CreationDate).HasDefaultValue(DateTime.Now);
             builder.Property(x=>x.IsDeleted).HasDefaultValue(false);
+            builder.Property(x => x.LastModifiedDate).IsRequired(false);
         }
     }
 }
