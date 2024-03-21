@@ -20,33 +20,27 @@ namespace Traning_Platfrom_API.Controllers
         }
         [HttpPost]
         [Route("[action]")]
-        public Task CreateJobSeekerAccount(CreateJobSeekerDTO dto)
+        public async Task CreateJobSeekerAccount(CreateJobSeekerDTO dto)
         {
-            throw new NotImplementedException();
+             await _service.CreateJobSeekerAccountAsync(dto);
         }
         [HttpPost]
         [Route("[action]")]
-        public Task CreateOrganizationAccount(CreateOrganizationDTO dto)
+        public async Task CreateOrganizationAccount(CreateOrganizationDTO dto)
         {
-            throw new NotImplementedException();
+             await _service.CreateOrganizationAccountAsync(dto);
         }
         [HttpPost]
         [Route("[action]")]
-        public Task CreateUser(CreateUserDTO dto)
+        public async Task CreateUser(CreateUserDTO dto)
         {
-            throw new NotImplementedException();
+             await _service.CreateUserAsync(dto);
         }
         [HttpPost]
         [Route("[action]")]
-        public Task Login(LoginDTO dto)
+        public async Task<string> Login(LoginDTO dto)
         {
-            throw new NotImplementedException();
-        }
-        [HttpPut]
-        [Route("[action]")]
-        public Task Logout(LogoutDTO dto)
-        {
-            throw new NotImplementedException();
+            return await _service.LoginAsync(dto);
         }
     }
 }

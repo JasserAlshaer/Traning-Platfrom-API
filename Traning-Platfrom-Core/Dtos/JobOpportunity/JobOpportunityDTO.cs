@@ -30,6 +30,8 @@ namespace Traning_Platfrom_Core.Dtos.JobOpportunity
         public JobLevel JobLevel { get; set; }
         public JobType JobType { get; set; }
         public JobApplicationStatus JobApplicationStatus { get; set; }
-        public virtual Organization Organization { get; set; }
+        public int OrganizationId { get; set; }
+        public string OrganizationName { get; set; }
+        public string OrganizationProfileImage { get; set; }
     }
 }

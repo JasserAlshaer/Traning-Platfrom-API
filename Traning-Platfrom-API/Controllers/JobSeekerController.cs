@@ -23,73 +23,73 @@ namespace Traning_Platfrom_API.Controllers
         [Route("[action]")]
         public Task<List<JobInterviewDTO>> GetMyInterview()
         {
-            throw new NotImplementedException();
+            return _service.GetMyInterviewAsync();
         }
         [HttpGet]
         [Route("[action]")]
         public Task<List<JobApplicationDTO>> GetMyJobApplication()
         {
-            throw new NotImplementedException();
+            return _service.GetMyJobApplicationAsync();
         }
         [HttpPost]
         [Route("[action]")]
         public Task CompleteProfile(CompleteJobSeekerProfileDTO dto)
         {
-            throw new NotImplementedException();
+            return _service.CompleteProfileAsync(dto);
         }
         [HttpPost]
         [Route("[action]")]
         public Task CreateEducationHistory(EducationHistoryDTO dto)
         {
-            throw new NotImplementedException();
+            return _service.CreateEducationHistoryAsync(dto);
         }
         [HttpPost]
         [Route("[action]")]
         public Task CreateExperience(ExperienceDTO dto)
         {
-            throw new NotImplementedException();
+            return _service.CreateExperienceAsync(dto);
         }
         [HttpPost]
         [Route("[action]")]
         public Task CreateJobSeekerSkill(CreateJobSeekerSkill dto)
         {
-            throw new NotImplementedException();
+            return _service.CreateJobSeekerSkillAsync(dto);
         }
         [HttpPost]
         [Route("[action]")]
         public Task SendJobApplication(CreateJobApplicationDTO dto)
         {
-            throw new NotImplementedException();
+            return _service.SendJobApplicationAsync(dto);
         }
         [HttpPut]
         [Route("[action]")]
         public Task UpdateEducationHistory(EducationHistoryDTO dto)
         {
-            throw new NotImplementedException();
+            return _service.UpdateEducationHistoryAsync(dto);
         }
         [HttpPut]
         [Route("[action]")]
         public Task UpdateExperience(ExperienceDTO dto)
         {
-            throw new NotImplementedException();
+            return _service.UpdateExperienceAsync(dto);
         }
         [HttpDelete]
         [Route("[action]")]
         public Task DeleteEducationHistory(int Id)
         {
-            throw new NotImplementedException();
+            return _service.DeleteEducationHistoryAsync(Id);
         }
         [HttpDelete]
         [Route("[action]")]
         public Task DeleteExperience(int Id)
         {
-            throw new NotImplementedException();
+            return _service.DeleteExperienceAsync(Id);
         }
         [HttpDelete]
         [Route("[action]")]
         public Task DeleteJobSeekerSkill(int Id)
         {
-            throw new NotImplementedException();
+            return _service.DeleteJobSeekerSkillAsync(Id);
         }
 
     }

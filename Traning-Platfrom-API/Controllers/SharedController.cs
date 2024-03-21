@@ -18,27 +18,27 @@ namespace Traning_Platfrom_API.Controllers
         }
         [HttpGet]
         [Route("[action]")]
-        public Task<List<JobField>> GetJobFields()
+        public async Task<List<JobField>> GetJobFields()
         {
-            throw new NotImplementedException();
+            return await _service.GetJobFieldsAsync();    
         }
         [HttpGet]
         [Route("[action]")]
-        public Task<List<JobOpportunityDTO>> GetJobOpportunity()
+        public async Task<List<JobOpportunityCardDTO>> GetJobOpportunity()
         {
-            throw new NotImplementedException();
+            return await _service.GetJobOpportunityAsync();
         }
         [HttpGet]
         [Route("[action]")]
-        public Task<List<OrganizationDTO>> GetOrganization()
+        public async Task<List<OrganizationDTO>> GetOrganization()
         {
-            throw new NotImplementedException();
+            return await _service.GetOrganizationAsync();    
         }
         [HttpGet]
         [Route("[action]")]
-        public Task<List<Skill>> GetSkills()
+        public async Task<List<Skill>> GetSkills()
         {
-            throw new NotImplementedException();
+            return await _service.GetSkillsAsync();    
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Traning_Platfrom_Infra.Repositaries
         {
             _context = context;
         }
-        public Task CompleteOrganizationProfileAsync(CreateOrganizationDTO dto)
+        public async Task CompleteOrganizationProfileAsync(CreateOrganizationDTO dto)
         {
             throw new NotImplementedException();
         }
@@ -29,42 +29,42 @@ namespace Traning_Platfrom_Infra.Repositaries
             throw new NotImplementedException();
         }
 
-        public Task CreateJobOpportunityAsync(CreateJobOpportunityDTO dto)
+        public async Task CreateJobOpportunityAsync(CreateJobOpportunityDTO dto)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteJobInterviewAsync(int Id)
+        public async Task DeleteJobInterviewAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteJobOpportunityAsync(int Id)
+        public async Task DeleteJobOpportunityAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<JobInterviewDTO>> GetAllJobInterviewAsync(int Id)
+        public async Task<List<JobInterviewDTO>> GetAllJobInterviewAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<JobApplicationDTO>> GetJobApplicationAsync()
+        public async Task<List<JobApplicationDTO>> GetJobApplicationAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<JobApplicationDTO>> GetTopApplicantAsync()
+        public async Task<List<JobApplicationDTO>> GetTopApplicantAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateJobInterviewAsync(CreateJobInterviewDTO dto)
+        public async Task UpdateJobInterviewAsync(CreateJobInterviewDTO dto)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateJobOpportunityAsync(CreateJobOpportunityDTO dto)
+        public async Task UpdateJobOpportunityAsync(CreateJobOpportunityDTO dto)
         {
             throw new NotImplementedException();
         }

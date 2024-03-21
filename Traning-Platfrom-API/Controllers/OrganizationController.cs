@@ -21,61 +21,61 @@ namespace Traning_Platfrom_API.Controllers
         [Route("[action]")]
         public Task<List<JobInterviewDTO>> GetAllJobInterview(int Id)
         {
-            throw new NotImplementedException();
+            return _service.GetAllJobInterviewAsync(Id);    
         }
         [HttpGet]
         [Route("[action]")]
         public Task<List<JobApplicationDTO>> GetJobApplication()
         {
-            throw new NotImplementedException();
+            return _service.GetJobApplicationAsync();
         }
         [HttpGet]
         [Route("[action]")]
         public Task<List<JobApplicationDTO>> GetTopApplicant()
         {
-            throw new NotImplementedException();
+            return _service.GetTopApplicantAsync();
         }
         [HttpPost]
         [Route("[action]")]
         public Task CompleteOrganizationProfile(CreateOrganizationDTO dto)
         {
-            throw new NotImplementedException();
+            return _service.CompleteOrganizationProfileAsync(dto);
         }
         [HttpPost]
         [Route("[action]")]
         public Task CreateJobInterview(CreateJobInterviewDTO dto)
         {
-            throw new NotImplementedException();
+            return _service.CreateJobInterviewAsync(dto);
         }
         [HttpPost]
         [Route("[action]")]
         public Task CreateJobOpportunity(CreateJobOpportunityDTO dto)
         {
-            throw new NotImplementedException();
+            return _service.CreateJobOpportunityAsync(dto);
         }
         [HttpPut]
         [Route("[action]")]
         public Task UpdateJobInterview(CreateJobInterviewDTO dto)
         {
-            throw new NotImplementedException();
+            return _service.UpdateJobInterviewAsync(dto);
         }
         [HttpPost]
         [Route("[action]")]
         public Task UpdateJobOpportunity(CreateJobOpportunityDTO dto)
         {
-            throw new NotImplementedException();
+            return _service.UpdateJobOpportunityAsync(dto);
         }
         [HttpDelete]
         [Route("[action]")]
         public Task DeleteJobInterview(int Id)
         {
-            throw new NotImplementedException();
+            return _service.DeleteJobInterviewAsync(Id);
         }
         [HttpDelete]
         [Route("[action]")]
         public Task DeleteJobOpportunity(int Id)
         {
-            throw new NotImplementedException();
+            return _service.DeleteJobOpportunityAsync(Id);
         }
     }
 }

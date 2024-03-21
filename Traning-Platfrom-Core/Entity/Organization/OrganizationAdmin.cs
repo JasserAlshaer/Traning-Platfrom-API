@@ -17,5 +17,6 @@ namespace Traning_Platfrom_Core.Entity.Organization
         public string Phone { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
+        public List<Organization> Organizations { get; set; }
     }
 }
