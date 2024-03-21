@@ -8,7 +8,7 @@ namespace Traning_Platfrom_Core.Dtos.JobSeeker
 {
     public class CompleteJobSeekerProfileDTO
     {
-        public string JobSeekerId { get; set; }
+        public int JobSeekerId { get; set; }
         public string ResumeFilePath { get; set; }
         public string ProfileImagePath { get; set; }
         public string Address { get; set; }

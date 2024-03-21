@@ -10,3 +10,5 @@
 2024-03-21 08:52:20.705 +03:00 [INF] API Starting Successfully
 2024-03-21 08:57:40.525 +03:00 [INF] Appliing Configuration
 2024-03-21 08:57:40.715 +03:00 [INF] API Starting Successfully
+2024-03-21 09:42:13.875 +03:00 [INF] Appliing Configuration
+2024-03-21 09:42:14.643 +03:00 [INF] API Starting Successfully

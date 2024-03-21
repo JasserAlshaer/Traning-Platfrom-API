@@ -9,6 +9,7 @@ namespace Traning_Platfrom_Core.Dtos.Experience
 {
     public class ExperienceDTO
     {
+        public int Id { get; set; }
         public string JobTitle { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

@@ -18,6 +18,11 @@ namespace Traning_Platfrom_Core.EntityConfigurations
             builder.Property(x => x.CreationDate).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.IsDeleted).HasDefaultValue(false);
             builder.Property(x => x.LastModifiedDate).IsRequired(false);
+            builder.Property(x => x.ProfileBio).IsRequired(false);
+            builder.Property(x => x.ProfileImagePath).IsRequired(false);
+            builder.Property(x => x.Address).IsRequired(false);
+            builder.Property(x => x.ResumeFilePath).IsRequired(false);
+            builder.Property(x => x.IsHaveDrivingLicense).IsRequired(false);
         }
     }
 }
