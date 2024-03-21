@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Traning_Platfrom_Core.Context;
 
@@ -11,9 +12,11 @@ using Traning_Platfrom_Core.Context;
 namespace Traning_Platfrom_Core.Migrations
 {
     [DbContext(typeof(TrainingPlatformDbContext))]
-    partial class TrainingPlatformDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240321081541_edit")]
+    partial class edit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

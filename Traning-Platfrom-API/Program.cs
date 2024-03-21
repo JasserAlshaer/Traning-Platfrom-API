@@ -22,7 +22,7 @@ builder.Services.AddControllers().AddNewtonsoftJson();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 //Configure DB
-builder.Services.AddDbContext<TrainingPlatformDbContext>(options=>
+builder.Services.AddDbContext<TrainingPlatformDbContext>(options =>
 options.UseMySQL(builder.Configuration.GetConnectionString("Default")));
 //Configure Implementation Scope 
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
@@ -67,7 +67,7 @@ builder.Services.AddSwaggerGen(options =>
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
 string mainDir = Directory.GetCurrentDirectory();
-string loggerPath = mainDir+builder.Configuration.GetSection("LoggerPath").Value;
+string loggerPath = mainDir + builder.Configuration.GetSection("LoggerPath").Value;
 Serilog.Log.Logger = new LoggerConfiguration().
                 WriteTo.File(loggerPath, rollingInterval: RollingInterval.Day).
                 CreateLogger();
@@ -107,13 +107,21 @@ try
 {
     Log.Information("Appliing Configuration");
     app.UseSwagger();
-    app.UseSwaggerUI();
+    /*app.UseSwaggerUI();*/
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API Name V1");
+        c.RoutePrefix = string.Empty;
+    });
     app.UseCors("X");
     app.UseAuthentication();
     app.UseAuthorization();
     app.UseHttpsRedirection();
 
     app.UseAuthorization();
+
+
+
 
     app.Use(async (context, next) =>
     {

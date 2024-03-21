@@ -22,7 +22,7 @@ namespace Traning_Platfrom_Core.EntityConfigurations
             builder.Property(x => x.ProfileImagePath).IsRequired(false);
             builder.Property(x => x.Address).IsRequired(false);
             builder.Property(x => x.ResumeFilePath).IsRequired(false);
-            builder.Property(x => x.IsHaveDrivingLicense).IsRequired(false);
+            builder.Property(x => x.IsHaveDrivingLicense).HasDefaultValue(false);
         }
     }
 }
