@@ -11,6 +11,8 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using Traning_Platfrom_Core.Context;
+using Traning_Platfrom_Core.IRepositaries;
+using Traning_Platfrom_Infra.Repositaries;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +24,11 @@ builder.Services.AddEndpointsApiExplorer();
 //Configure DB
 builder.Services.AddDbContext<TrainingPlatformDbContext>(options=>
 options.UseMySQL(builder.Configuration.GetConnectionString("Default")));
+//Configure Implementation Scope 
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<IJobSeekerService, JobSeekerService>();
+builder.Services.AddScoped<IOrganizationService, OrganizationService>();
+builder.Services.AddScoped<ISharedService, SharedService>();
 //swagger with enable for summary 
 builder.Services.AddSwaggerGen(options =>
 {

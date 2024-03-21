@@ -14,18 +14,18 @@ namespace Traning_Platfrom_Core.IRepositaries
 {
     public interface IJobSeekerService
     {
-        Task CompleteProfile(CompleteJobSeekerProfileDTO dto);
-        Task CreateEducationHistory(EducationHistoryDTO dto);
-        Task UpdateEducationHistory(EducationHistoryDTO dto);
-        Task DeleteEducationHistory(int Id);
-        Task CreateExperience(ExperienceDTO dto);
-        Task UpdateExperience(ExperienceDTO dto);
-        Task DeleteExperience(int Id);
-        Task CreateJobSeekerSkill(CreateJobSeekerSkill dto);
-        Task DeleteJobSeekerSkill(int Id);
-        Task SendJobApplication(CreateJobApplicationDTO dto);
-        Task<List<JobApplicationDTO>> GetMyJobApplication();
-        Task<List<JobInterviewDTO>> GetMyInterview();
+        Task CompleteProfileAsync(CompleteJobSeekerProfileDTO dto);
+        Task CreateEducationHistoryAsync(EducationHistoryDTO dto);
+        Task UpdateEducationHistoryAsync(EducationHistoryDTO dto);
+        Task DeleteEducationHistoryAsync(int Id);
+        Task CreateExperienceAsync(ExperienceDTO dto);
+        Task UpdateExperienceAsync(ExperienceDTO dto);
+        Task DeleteExperienceAsync(int Id);
+        Task CreateJobSeekerSkillAsync(CreateJobSeekerSkill dto);
+        Task DeleteJobSeekerSkillAsync(int Id);
+        Task SendJobApplicationAsync(CreateJobApplicationDTO dto);
+        Task<List<JobApplicationDTO>> GetMyJobApplicationAsync();
+        Task<List<JobInterviewDTO>> GetMyInterviewAsync();
 
     }
 }

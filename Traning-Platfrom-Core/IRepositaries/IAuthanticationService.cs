@@ -13,10 +13,10 @@ namespace Traning_Platfrom_Core.IRepositaries
 {
     public interface IAuthenticationService
     {
-        Task CreateJobSeekerAccount(CreateJobSeekerDTO dto);
-        Task CreateOrganizationAccount(CreateOrganizationDTO dto);
-        Task CreateUser(CreateUserDTO dto);
-        Task Login(LoginDTO dto);
-        Task Logout(LogoutDTO dto);
+        Task CreateJobSeekerAccountAsync(CreateJobSeekerDTO dto);
+        Task CreateOrganizationAccountAsync(CreateOrganizationDTO dto);
+        Task CreateUserAsync(CreateUserDTO dto);
+        Task LoginAsync(LoginDTO dto);
+        Task LogoutAsync(LogoutDTO dto);
     }
 }

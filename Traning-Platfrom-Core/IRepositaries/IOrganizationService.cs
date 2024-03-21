@@ -13,15 +13,15 @@ namespace Traning_Platfrom_Core.IRepositaries
 {
     public interface IOrganizationService
     {
-        Task CompleteOrganizationProfile(CreateOrganizationDTO dto);
-        Task CreateJobOpportunity(CreateJobOpportunityDTO dto);
-        Task UpdateJobOpportunity(CreateJobOpportunityDTO dto);
-        Task DeleteJobOpportunity(int Id);
-        Task CreateJobInterview(CreateJobInterviewDTO dto);
-        Task UpdateJobInterview(CreateJobInterviewDTO dto);
-        Task DeleteJobInterview(int Id);
-        Task<List<JobApplicationDTO>> GetJobApplication();
-        Task<List<JobApplicationDTO>> GetTopApplicant();
-        Task<List<JobInterviewDTO>> GetAllJobInterview(int Id);
+        Task CompleteOrganizationProfileAsync(CreateOrganizationDTO dto);
+        Task CreateJobOpportunityAsync(CreateJobOpportunityDTO dto);
+        Task UpdateJobOpportunityAsync(CreateJobOpportunityDTO dto);
+        Task DeleteJobOpportunityAsync(int Id);
+        Task CreateJobInterviewAsync(CreateJobInterviewDTO dto);
+        Task UpdateJobInterviewAsync(CreateJobInterviewDTO dto);
+        Task DeleteJobInterviewAsync(int Id);
+        Task<List<JobApplicationDTO>> GetJobApplicationAsync();
+        Task<List<JobApplicationDTO>> GetTopApplicantAsync();
+        Task<List<JobInterviewDTO>> GetAllJobInterviewAsync(int Id);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Traning_Platfrom_Core.Context;
 using Traning_Platfrom_Core.Dtos.EducationHistory;
 using Traning_Platfrom_Core.Dtos.Experience;
 using Traning_Platfrom_Core.Dtos.JobApplication;
@@ -15,62 +16,68 @@ namespace Traning_Platfrom_Infra.Repositaries
 {
     public class JobSeekerService : IJobSeekerService
     {
-        public Task CompleteProfile(CompleteJobSeekerProfileDTO dto)
+        private readonly TrainingPlatformDbContext _context;
+        public JobSeekerService(TrainingPlatformDbContext context)
+        {
+            _context = context;
+        }
+
+        public Task CompleteProfileAsync(CompleteJobSeekerProfileDTO dto)
         {
             throw new NotImplementedException();
         }
 
-        public Task CreateEducationHistory(EducationHistoryDTO dto)
+        public Task CreateEducationHistoryAsync(EducationHistoryDTO dto)
         {
             throw new NotImplementedException();
         }
 
-        public Task CreateExperience(ExperienceDTO dto)
+        public Task CreateExperienceAsync(ExperienceDTO dto)
         {
             throw new NotImplementedException();
         }
 
-        public Task CreateJobSeekerSkill(CreateJobSeekerSkill dto)
+        public Task CreateJobSeekerSkillAsync(CreateJobSeekerSkill dto)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteEducationHistory(int Id)
+        public Task DeleteEducationHistoryAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteExperience(int Id)
+        public Task DeleteExperienceAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteJobSeekerSkill(int Id)
+        public Task DeleteJobSeekerSkillAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<JobInterviewDTO>> GetMyInterview()
+        public Task<List<JobInterviewDTO>> GetMyInterviewAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<JobApplicationDTO>> GetMyJobApplication()
+        public Task<List<JobApplicationDTO>> GetMyJobApplicationAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task SendJobApplication(CreateJobApplicationDTO dto)
+        public Task SendJobApplicationAsync(CreateJobApplicationDTO dto)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateEducationHistory(EducationHistoryDTO dto)
+        public Task UpdateEducationHistoryAsync(EducationHistoryDTO dto)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateExperience(ExperienceDTO dto)
+        public Task UpdateExperienceAsync(ExperienceDTO dto)
         {
             throw new NotImplementedException();
         }

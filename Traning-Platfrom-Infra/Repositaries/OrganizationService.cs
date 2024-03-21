@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Traning_Platfrom_Core.Context;
 using Traning_Platfrom_Core.Dtos.JobApplication;
 using Traning_Platfrom_Core.Dtos.JobInterview;
 using Traning_Platfrom_Core.Dtos.JobOpportunity;
@@ -13,52 +14,57 @@ namespace Traning_Platfrom_Infra.Repositaries
 {
     public class OrganizationService : IOrganizationService
     {
-        public Task CompleteOrganizationProfile(CreateOrganizationDTO dto)
+        private readonly TrainingPlatformDbContext _context;
+        public OrganizationService(TrainingPlatformDbContext context)
+        {
+            _context = context;
+        }
+        public Task CompleteOrganizationProfileAsync(CreateOrganizationDTO dto)
         {
             throw new NotImplementedException();
         }
 
-        public Task CreateJobInterview(CreateJobInterviewDTO dto)
+        public Task CreateJobInterviewAsync(CreateJobInterviewDTO dto)
         {
             throw new NotImplementedException();
         }
 
-        public Task CreateJobOpportunity(CreateJobOpportunityDTO dto)
+        public Task CreateJobOpportunityAsync(CreateJobOpportunityDTO dto)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteJobInterview(int Id)
+        public Task DeleteJobInterviewAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteJobOpportunity(int Id)
+        public Task DeleteJobOpportunityAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<JobInterviewDTO>> GetAllJobInterview(int Id)
+        public Task<List<JobInterviewDTO>> GetAllJobInterviewAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<JobApplicationDTO>> GetJobApplication()
+        public Task<List<JobApplicationDTO>> GetJobApplicationAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<JobApplicationDTO>> GetTopApplicant()
+        public Task<List<JobApplicationDTO>> GetTopApplicantAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateJobInterview(CreateJobInterviewDTO dto)
+        public Task UpdateJobInterviewAsync(CreateJobInterviewDTO dto)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateJobOpportunity(CreateJobOpportunityDTO dto)
+        public Task UpdateJobOpportunityAsync(CreateJobOpportunityDTO dto)
         {
             throw new NotImplementedException();
         }
