@@ -8,6 +8,7 @@ namespace Traning_Platfrom_Core.Dtos.OrganizationDTO
 {
     public class CreateOrganizationDTO
     {
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string LastName { get; set; }

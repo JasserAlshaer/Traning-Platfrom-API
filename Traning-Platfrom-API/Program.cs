@@ -66,8 +66,8 @@ builder.Services.AddSwaggerGen(options =>
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
-
-string loggerPath = builder.Configuration.GetSection("LoggerPath").Value;
+string mainDir = Directory.GetCurrentDirectory();
+string loggerPath = mainDir+builder.Configuration.GetSection("LoggerPath").Value;
 Serilog.Log.Logger = new LoggerConfiguration().
                 WriteTo.File(loggerPath, rollingInterval: RollingInterval.Day).
                 CreateLogger();

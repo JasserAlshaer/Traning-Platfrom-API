@@ -1,2 +1,0 @@
-2024-03-19 23:53:38.337 +03:00 [INF] Appliing Configuration
-2024-03-19 23:53:38.461 +03:00 [INF] API Starting Successfully

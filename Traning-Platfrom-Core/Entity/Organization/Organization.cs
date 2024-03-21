@@ -10,7 +10,6 @@ namespace Traning_Platfrom_Core.Entity.Organization
 {
     public class Organization : SharedEntity
     {
-        
         public string Name { get; set; }
         public string Pio { get; set; }
         public string Address { get; set; }

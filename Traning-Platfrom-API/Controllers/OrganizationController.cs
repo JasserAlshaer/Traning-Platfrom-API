@@ -19,15 +19,15 @@ namespace Traning_Platfrom_API.Controllers
         }
         [HttpGet]
         [Route("[action]")]
-        public Task<List<JobInterviewDTO>> GetAllJobInterview(int Id)
+        public Task<List<JobInterviewDetailsDTO>> GetAllJobInterview(int Id)
         {
             return _service.GetAllJobInterviewAsync(Id);    
         }
         [HttpGet]
         [Route("[action]")]
-        public Task<List<JobApplicationDTO>> GetJobApplication()
+        public Task<List<JobApplicationDetailsDTO>> GetJobApplication(int Id)
         {
-            return _service.GetJobApplicationAsync();
+            return _service.GetJobApplicationAsync(Id);
         }
         [HttpGet]
         [Route("[action]")]
