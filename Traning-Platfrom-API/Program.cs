@@ -107,12 +107,12 @@ try
 {
     Log.Information("Appliing Configuration");
     app.UseSwagger();
-    /*app.UseSwaggerUI();*/
-    app.UseSwaggerUI(c =>
+    app.UseSwaggerUI();
+    /*app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API Name V1");
         c.RoutePrefix = string.Empty;
-    });
+    });*/
     app.UseCors("X");
     app.UseAuthentication();
     app.UseAuthorization();

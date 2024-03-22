@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Traning_Platfrom_Core.Entity.Shared;
 
-namespace Traning_Platfrom_Core.Entity.Organization
+namespace Traning_Platfrom_Core.Entity.Company
 {
     public class OrganizationAdmin : SharedEntity
     {

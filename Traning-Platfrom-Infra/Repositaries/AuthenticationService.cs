@@ -17,7 +17,7 @@ using Traning_Platfrom_Core.Dtos.Logout;
 using Traning_Platfrom_Core.Dtos.OrganizationDTO;
 using Traning_Platfrom_Core.Dtos.User;
 using Traning_Platfrom_Core.Entity.Client;
-using Traning_Platfrom_Core.Entity.Organization;
+using Traning_Platfrom_Core.Entity.Company;
 using Traning_Platfrom_Core.Entity.UserConfiguration;
 using Traning_Platfrom_Core.IRepositaries;
 using static Traning_Platfrom_Core.Enums.Enums;

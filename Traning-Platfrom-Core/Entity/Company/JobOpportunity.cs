@@ -7,7 +7,7 @@ using Traning_Platfrom_Core.Entity.Lookups;
 using Traning_Platfrom_Core.Entity.Shared;
 using static Traning_Platfrom_Core.Enums.Enums;
 
-namespace Traning_Platfrom_Core.Entity.Organization
+namespace Traning_Platfrom_Core.Entity.Company
 {
     public class JobOpportunity : SharedEntity
     {
@@ -30,6 +30,8 @@ namespace Traning_Platfrom_Core.Entity.Organization
         public EducationCertificationType EducationCertificationType { get; set; }
         public JobLevel JobLevel { get; set; }
         public JobType JobType { get; set; }
+
+        public JobField JobField { get; set; }
         public JobApplicationStatus JobApplicationStatus { get; set; }
         public virtual Organization Organization { get; set; }
         public virtual List<JobInterview> JobInterviews { get; set; }   

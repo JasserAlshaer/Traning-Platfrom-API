@@ -329,7 +329,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.ToTable("Skills");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.JobApplication", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.JobApplication", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -370,7 +370,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.ToTable("JobApplications");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.JobInterview", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.JobInterview", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -424,7 +424,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.ToTable("JobInterviews");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.JobOpportunity", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.JobOpportunity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -522,7 +522,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.ToTable("JobOpportunities");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.Organization", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.Organization", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -597,7 +597,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.ToTable("Organizations");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.OrganizationAdmin", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.OrganizationAdmin", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -832,9 +832,9 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Navigation("Skill");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.JobApplication", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.JobApplication", b =>
                 {
-                    b.HasOne("Traning_Platfrom_Core.Entity.Organization.JobOpportunity", "JobOpportunity")
+                    b.HasOne("Traning_Platfrom_Core.Entity.Company.JobOpportunity", "JobOpportunity")
                         .WithMany("JobApplications")
                         .HasForeignKey("JobOpportunityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -851,7 +851,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Navigation("JobSeeker");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.JobInterview", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.JobInterview", b =>
                 {
                     b.HasOne("Traning_Platfrom_Core.Entity.Client.JobSeeker", "JobSeeker")
                         .WithMany("JobInterviews")
@@ -859,7 +859,7 @@ namespace Traning_Platfrom_Core.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Traning_Platfrom_Core.Entity.Organization.JobOpportunity", "Opportunity")
+                    b.HasOne("Traning_Platfrom_Core.Entity.Company.JobOpportunity", "Opportunity")
                         .WithMany("JobInterviews")
                         .HasForeignKey("OpportunityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -870,9 +870,9 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Navigation("Opportunity");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.JobOpportunity", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.JobOpportunity", b =>
                 {
-                    b.HasOne("Traning_Platfrom_Core.Entity.Organization.Organization", "Organization")
+                    b.HasOne("Traning_Platfrom_Core.Entity.Company.Organization", "Organization")
                         .WithMany("JobOpportunities")
                         .HasForeignKey("OrganizationId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -881,9 +881,9 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.Organization", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.Organization", b =>
                 {
-                    b.HasOne("Traning_Platfrom_Core.Entity.Organization.OrganizationAdmin", "OrganizationAdmin")
+                    b.HasOne("Traning_Platfrom_Core.Entity.Company.OrganizationAdmin", "OrganizationAdmin")
                         .WithMany()
                         .HasForeignKey("OrganizationAdminId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -922,14 +922,14 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Navigation("JobInterviews");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.JobOpportunity", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.JobOpportunity", b =>
                 {
                     b.Navigation("JobApplications");
 
                     b.Navigation("JobInterviews");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.Organization", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.Organization", b =>
                 {
                     b.Navigation("JobOpportunities");
                 });

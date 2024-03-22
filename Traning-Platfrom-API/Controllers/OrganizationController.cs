@@ -59,7 +59,7 @@ namespace Traning_Platfrom_API.Controllers
         {
             return _service.UpdateJobInterviewAsync(dto);
         }
-        [HttpPost]
+        [HttpPut]
         [Route("[action]")]
         public Task UpdateJobOpportunity(CreateJobOpportunityDTO dto)
         {

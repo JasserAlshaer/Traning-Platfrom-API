@@ -4,7 +4,9 @@ using Traning_Platfrom_Core.Dtos.EducationHistory;
 using Traning_Platfrom_Core.Dtos.Experience;
 using Traning_Platfrom_Core.Dtos.JobApplication;
 using Traning_Platfrom_Core.Dtos.JobInterview;
+using Traning_Platfrom_Core.Dtos.JobOpportunity;
 using Traning_Platfrom_Core.Dtos.JobSeeker;
+using Traning_Platfrom_Core.Dtos.JobSeeker.Resume;
 using Traning_Platfrom_Core.Dtos.Skills;
 using Traning_Platfrom_Core.IRepositaries;
 
@@ -27,9 +29,39 @@ namespace Traning_Platfrom_API.Controllers
         }
         [HttpGet]
         [Route("[action]")]
-        public Task<List<JobApplicationDTO>> GetMyJobApplication()
+        public Task<List<JobOpportunityCardDTO>> GetMyJobApplication(int Id)
         {
-            return _service.GetMyJobApplicationAsync();
+            return _service.GetMyJobApplicationAsync(Id);
+        }
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<JobSeekerCompleteProfileDTO> GetJobSeekerCompleteProfile(int Id)
+        {
+            return await _service.GetJobSeekerCompleteProfileAsync(Id);
+        }
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<ProfileDTO> GetJobSeekerProfileById(int Id)
+        {
+            return await _service.GetJobSeekerProfileByIdAsync(Id);
+        }
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<ResumeDTO> GetJobSeekerResumeById(int Id)
+        {
+            return await _service.GetJobSeekerResumeByIdAsync(Id);
+        }
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<List<ExperienceDTO>> GetJobSeekerExperiencesById(int Id)
+        {
+            return await _service.GetJobSeekerExperiencesByIdAsync(Id);
+        }
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<List<EducationHistoryDTO>> GetJobSeekerEducationHistoryById(int Id)
+        {
+            return await _service.GetJobSeekerEducationHistoryByIdAsync(Id);
         }
         [HttpPost]
         [Route("[action]")]

@@ -12,7 +12,7 @@ using Traning_Platfrom_Core.Dtos.JobInterview;
 using Traning_Platfrom_Core.Dtos.JobOpportunity;
 using Traning_Platfrom_Core.Dtos.OrganizationDTO;
 using Traning_Platfrom_Core.Entity.Lookups;
-using Traning_Platfrom_Core.Entity.Organization;
+using Traning_Platfrom_Core.Entity.Company;
 using Traning_Platfrom_Core.IRepositaries;
 using static Traning_Platfrom_Core.Enums.Enums;
 

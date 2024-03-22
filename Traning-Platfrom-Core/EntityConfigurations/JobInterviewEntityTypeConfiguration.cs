@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Traning_Platfrom_Core.Entity.Organization;
+using Traning_Platfrom_Core.Entity.Company;
 
 namespace Traning_Platfrom_Core.EntityConfigurations
 {

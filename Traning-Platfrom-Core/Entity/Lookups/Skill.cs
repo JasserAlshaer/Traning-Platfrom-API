@@ -9,7 +9,6 @@ namespace Traning_Platfrom_Core.Entity.Lookups
 {
     public class Skill : SharedEntity
     {
-        
         public string Title { get; set; }
     }
 }

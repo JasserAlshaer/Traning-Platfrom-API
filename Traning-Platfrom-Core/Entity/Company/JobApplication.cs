@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Traning_Platfrom_Core.Entity.Client;
 using Traning_Platfrom_Core.Entity.Shared;
 
-namespace Traning_Platfrom_Core.Entity.Organization
+namespace Traning_Platfrom_Core.Entity.Company
 {
     public class JobApplication : SharedEntity
     {

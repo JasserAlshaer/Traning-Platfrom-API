@@ -23,5 +23,17 @@ namespace Traning_Platfrom_Core.Helper
                 return mygpa;
             }
         }
+
+        public static float CalaucluateAVG(string gPA, string gradingSystem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static int CalculateDaysDifference(DateTime startDate, DateTime? endDate)
+        {
+            DateTime end = endDate ?? DateTime.Now;
+            TimeSpan timeSpan = end - startDate;
+            return timeSpan.Days;
+        }
     }
 }

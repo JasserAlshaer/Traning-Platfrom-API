@@ -9,10 +9,13 @@ using Traning_Platfrom_Core.Dtos.EducationHistory;
 using Traning_Platfrom_Core.Dtos.Experience;
 using Traning_Platfrom_Core.Dtos.JobApplication;
 using Traning_Platfrom_Core.Dtos.JobInterview;
+using Traning_Platfrom_Core.Dtos.JobOpportunity;
 using Traning_Platfrom_Core.Dtos.JobSeeker;
+using Traning_Platfrom_Core.Dtos.JobSeeker.Resume;
 using Traning_Platfrom_Core.Dtos.Skills;
 using Traning_Platfrom_Core.Entity.Client;
-using Traning_Platfrom_Core.Entity.Organization;
+using Traning_Platfrom_Core.Entity.Company;
+using Traning_Platfrom_Core.Entity.Lookups;
 using Traning_Platfrom_Core.Helper;
 using Traning_Platfrom_Core.IRepositaries;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -62,8 +65,8 @@ namespace Traning_Platfrom_Infra.Repositaries
                     Description = dto.Description,
                     GPA = dto.GPA,
                     GPAInPercentage = ServiceHelper.CalaucluateAVG(dto.GPA, dto.GradingSystem),
-                    GradingSystem = dto.GradingSystem,
-                    EducationCertificationType = dto.EducationCertificationType,
+                    GradingSystem = (GradingSystem)Enum.Parse(typeof(GradingSystem), dto.GradingSystem),
+                    EducationCertificationType = (EducationCertificationType)Enum.Parse(typeof(EducationCertificationType), dto.EducationCertificationType),
                     JobSeeker = profile
                 };
                 await _context.AddAsync(educationHistory);
@@ -87,14 +90,16 @@ namespace Traning_Platfrom_Infra.Repositaries
                     {
                         JobTitle = dto.JobTitle,
                         StartDate = dto.StartDate,
-                        EndDate = dto.EndDate,
+                        EndDate = dto.EndDate == default(DateTime) ? null : dto.EndDate,
                         Description = dto.Description,
                         CompanyName = dto.CompanyName,
-                        JobLevel = dto.JobLevel,
-                        JobType = dto.JobType,
+                        JobLevel = (JobLevel)Enum.Parse(typeof(JobLevel), dto.JobLevel),
+                        JobType = (JobType)Enum.Parse(typeof(JobType), dto.JobType),
                         JobSeeker = profile,
                         JobField = jobField
                     };
+                    await _context.AddAsync(experience);
+                    await _context.SaveChangesAsync();
                 }
                 else
                 {
@@ -121,6 +126,8 @@ namespace Traning_Platfrom_Infra.Repositaries
                         JobSeeker = profile,
                         Skill = skill
                     };
+                    await _context.AddAsync(jobSeekerSkill);
+                    await _context.SaveChangesAsync();
                 }
                 else
                 {
@@ -178,15 +185,180 @@ namespace Traning_Platfrom_Infra.Repositaries
             }
         }
 
+        public async Task<JobSeekerCompleteProfileDTO> GetJobSeekerCompleteProfileAsync(int Id)
+        {
+            var res = from jobseeker in _context.JobSeekers
+                      where jobseeker.Id == Id
+                      select new JobSeekerCompleteProfileDTO
+                      {
+                          JobSeekerId = jobseeker.Id,
+                          FullName =$"{jobseeker.FirstName} {jobseeker.SecondName} {jobseeker.LastName}",
+                          Email = jobseeker.EmailAddress,
+                          Phone = jobseeker.Phone,
+                          Pio = jobseeker.ProfileBio,
+                          FaceBook = jobseeker.FaceBook,
+                          Github = jobseeker.Github,
+                          LinkedIn = jobseeker.LinkedIn,
+                          Instgram = jobseeker.Instgram,
+                          Country = jobseeker.Country,
+                          City = jobseeker.City,
+                          Major = jobseeker.Major,
+                          Lanaguage = jobseeker.Lanaguage,
+                          Nationality = jobseeker.Nationality,
+                          MaritalStatus = jobseeker.MaritalStatus.ToString(),
+                          DateofBirth = jobseeker.BirthDate,
+                          FullAddress = jobseeker.Address,
+                          Gender = jobseeker.Gender.ToString(),
+                          Image = jobseeker.ProfileImagePath,
+                          ResumePath=jobseeker.ResumeFilePath,
+                          Qualification=jobseeker.Qualification.ToString(),
+
+                      };
+            var obj = await res.SingleOrDefaultAsync();
+            if(obj != null)
+            {
+                obj.Experiences = await GetJobSeekerExperiencesByIdAsync(Id);
+                int sum = 0;
+                foreach (var ex in obj.Experiences)
+                {
+                    sum += ServiceHelper.CalculateDaysDifference(ex.StartDate, ex.EndDate);
+                }
+                obj.ExperienceInDays = sum;
+                obj.Educations = await GetJobSeekerEducationHistoryByIdAsync(Id);
+            }
+            return obj;
+            
+        }
+
+        public async Task<List<EducationHistoryDTO>> GetJobSeekerEducationHistoryByIdAsync(int Id)
+        {
+            var res = from edu in _context.EducationHistories
+                      where edu.IsDeleted == false
+                      && edu.JobSeeker.Id == Id
+                      orderby edu.StartDate descending
+                      select new EducationHistoryDTO
+                      {
+                          Id = edu.Id,
+                          Title = edu.Title,
+                          Specification = edu.Specification,
+                          OrganizationName = edu.OrganizationName,
+                          StartDate = edu.StartDate,
+                          EndDate = edu.EndDate,
+                          Description = edu.Description,
+                          GPA = edu.GPA,
+                          GradingSystem = edu.GradingSystem.ToString(),
+                          EducationCertificationType = edu.EducationCertificationType.ToString(),
+                          JobSeekerId = Id
+                      };
+            return await res.ToListAsync();
+        }
+
+        public async Task<List<ExperienceDTO>> GetJobSeekerExperiencesByIdAsync(int Id)
+        {
+            var res = from exp in _context.Experiences
+                      join field in _context.JobFields
+                      on exp.JobField.Id equals field.Id
+                      where exp.IsDeleted == false
+                      && exp.JobSeeker.Id == Id
+                      orderby exp.StartDate descending
+                      select new ExperienceDTO
+                      {
+                          Id = exp.Id,
+                          JobTitle = exp.JobTitle,
+                          StartDate = exp.StartDate,
+                          EndDate = exp.EndDate !=null?(DateTime)exp.EndDate:null,
+                          Description = exp.Description,
+                          CompanyName = exp.CompanyName,
+                          JobLevel = exp.JobLevel.ToString(),
+                          JobType = exp.JobType.ToString(),
+                          JobFieldName = field.Title,
+                          JobSeekerId = Id,
+                      };
+            return await res.ToListAsync();
+        }
+
+        public async Task<ProfileDTO> GetJobSeekerProfileByIdAsync(int Id)
+        {
+            var res = from jobseeker in _context.JobSeekers
+                      where jobseeker.Id == Id
+                      select new ProfileDTO
+                      {
+                          JobSeekerId = jobseeker.Id,
+                          FirstName = jobseeker.FirstName,
+                          SecondName = jobseeker.SecondName,
+                          LastName = jobseeker.LastName,
+                          Email = jobseeker.EmailAddress,
+                          Phone = jobseeker.Phone,
+                          Pio = jobseeker.ProfileBio,
+                          FaceBook = jobseeker.FaceBook,
+                          Github = jobseeker.Github,
+                          LinkedIn = jobseeker.LinkedIn,
+                          Instgram = jobseeker.Instgram,
+                          Country = jobseeker.Country,
+                          City = jobseeker.City,
+                          Address = jobseeker.Address,
+                          Major = jobseeker.Major,
+                          Lanaguage = jobseeker.Lanaguage,
+                      };
+            return await res.SingleAsync();
+        }
+
+        public async Task<ResumeDTO> GetJobSeekerResumeByIdAsync(int Id)
+        {
+            var res = from jobseeker in _context.JobSeekers
+                      where jobseeker.Id == Id
+                      select new ResumeDTO
+                      {
+                          JobSeekerId = jobseeker.Id,
+                          FirstName = jobseeker.FirstName,
+                          SecondName = jobseeker.SecondName,
+                          LastName = jobseeker.LastName,
+                          Email = jobseeker.EmailAddress,
+                          Phone = jobseeker.Phone,
+                          Nationality = jobseeker.Nationality,
+                          MaritalStatus = jobseeker.MaritalStatus.ToString(),
+                          DateofBirth = jobseeker.BirthDate,
+                          FullAddress = jobseeker.Address,
+                          Gender = jobseeker.Gender.ToString(),
+                      };
+            return await res.SingleAsync();
+        }
+
         public async Task<List<JobInterviewDTO>> GetMyInterviewAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<JobApplicationDTO>> GetMyJobApplicationAsync()
+        public async Task<List<JobOpportunityCardDTO>> GetMyJobApplicationAsync(int Id)
         {
-            throw new NotImplementedException();
+            var res = from job in _context.JobOpportunities
+                      join org in _context.Organizations
+                      on job.Organization.Id equals org.Id
+                      join application in _context.JobApplications
+                      on job.Id equals application.JobOpportunity.Id
+                      join jobseeker in _context.JobSeekers
+                      on application.JobSeeker.Id equals jobseeker.Id
+                      where job.IsDeleted == false && jobseeker.Id == Id
+                      && application.IsDeleted == false
+                      orderby job.CreationDate descending
+                      select new JobOpportunityCardDTO
+                      {
+                          Title = job.Title,
+                          Description = job.Description,
+                          Country = job.Country,
+                          City = job.City,
+                          Region = job.Region,
+                          JobLevel = job.JobLevel.ToString(),
+                          JobType = job.JobType.ToString(),
+                          OrganizationId = org.Id,
+                          OrganizationName = org.Name,
+                          OrganizationProfileImage = org.ProfileImage,
+                          AppliedDate = application.CreationDate
+                      };
+            return await res.ToListAsync();
         }
+
+
 
         public async Task SendJobApplicationAsync(CreateJobApplicationDTO dto)
         {
@@ -228,8 +400,8 @@ namespace Traning_Platfrom_Infra.Repositaries
                 entity.Description = dto.Description;
                 entity.GPA = dto.GPA;
                 entity.GPAInPercentage = ServiceHelper.CalaucluateAVG(dto.GPA, dto.GradingSystem);
-                entity.GradingSystem = dto.GradingSystem;
-                entity.EducationCertificationType = dto.EducationCertificationType;
+                entity.GradingSystem = (GradingSystem)Enum.Parse(typeof(GradingSystem), dto.GradingSystem);
+                entity.EducationCertificationType = (EducationCertificationType)Enum.Parse(typeof(EducationCertificationType), dto.EducationCertificationType);
                 _context.Update(entity);
                 await _context.SaveChangesAsync();
             }
@@ -249,8 +421,8 @@ namespace Traning_Platfrom_Infra.Repositaries
                 entity.EndDate = dto.EndDate;
                 entity.Description = dto.Description;
                 entity.CompanyName = dto.CompanyName;
-                entity.JobLevel = dto.JobLevel;
-                entity.JobType = dto.JobType;
+                entity.JobLevel = (JobLevel)Enum.Parse(typeof(JobLevel), dto.JobLevel);
+                entity.JobType = (JobType)Enum.Parse(typeof(JobType), dto.JobType);
                 _context.Update(entity);
                 await _context.SaveChangesAsync();
             }

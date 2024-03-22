@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Traning_Platfrom_Core.Entity.Client;
 using Traning_Platfrom_Core.Entity.Lookups;
-using Traning_Platfrom_Core.Entity.Organization;
+using Traning_Platfrom_Core.Entity.Company;
 using Traning_Platfrom_Core.Entity.UserConfiguration;
 using Traning_Platfrom_Core.EntityConfigurations;
 
@@ -35,6 +35,8 @@ namespace Traning_Platfrom_Core.Context
             modelBuilder.ApplyConfiguration(new JobOpportunityEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new JobApplicationEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new JobInterviewEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new TestimonialEntityTypeConfiguration());
+            
         }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
@@ -50,5 +52,6 @@ namespace Traning_Platfrom_Core.Context
         public virtual DbSet<JobOpportunity> JobOpportunities { get; set; }
         public virtual DbSet<JobApplication> JobApplications { get; set; }
         public virtual DbSet<JobInterview> JobInterviews { get; set; }
+        public virtual DbSet<Testimonial> Testimonials { get; set; }
     }
 }

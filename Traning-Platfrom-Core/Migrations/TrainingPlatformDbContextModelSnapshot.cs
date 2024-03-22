@@ -32,7 +32,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 21, 11, 15, 40, 981, DateTimeKind.Local).AddTicks(9324));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(1427));
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
@@ -102,13 +102,13 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 21, 11, 15, 40, 982, DateTimeKind.Local).AddTicks(242));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(2510));
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsDeleted")
@@ -162,12 +162,24 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 21, 11, 15, 40, 981, DateTimeKind.Local).AddTicks(7973));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(4));
 
                     b.Property<string>("EmailAddress")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("FaceBook")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -177,6 +189,14 @@ namespace Traning_Platfrom_Core.Migrations
 
                     b.Property<int>("Gender")
                         .HasColumnType("int");
+
+                    b.Property<string>("Github")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Instgram")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -191,10 +211,33 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<bool>("IsProfileCompleted")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<string>("JobTitle")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Lanaguage")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("LinkedIn")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Major")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("MaritalStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nationality")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -211,6 +254,9 @@ namespace Traning_Platfrom_Core.Migrations
 
                     b.Property<string>("ProfileImagePath")
                         .HasColumnType("longtext");
+
+                    b.Property<int>("Qualification")
+                        .HasColumnType("int");
 
                     b.Property<string>("ResumeFilePath")
                         .HasColumnType("longtext");
@@ -240,7 +286,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 21, 11, 15, 40, 982, DateTimeKind.Local).AddTicks(1207));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(3548));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -265,7 +311,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.ToTable("JobSeekerSkills");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Lookups.JobField", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Client.Testimonial", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -274,29 +320,39 @@ namespace Traning_Platfrom_Core.Migrations
                         .HasAnnotation("SqlServer:IdentitySeed", 1L)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 21, 11, 15, 40, 982, DateTimeKind.Local).AddTicks(4778));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 15, 18, 23, 150, DateTimeKind.Local).AddTicks(7266));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("tinyint(1)")
                         .HasDefaultValue(false);
 
+                    b.Property<int>("JobSeekerId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("RateCount")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.HasKey("Id");
 
-                    b.ToTable("JobFields");
+                    b.HasIndex("JobSeekerId");
+
+                    b.ToTable("Testimonials");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Lookups.Skill", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.JobApplication", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -308,38 +364,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 21, 11, 15, 40, 982, DateTimeKind.Local).AddTicks(2131));
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
-                        .HasDefaultValue(false);
-
-                    b.Property<DateTime?>("LastModifiedDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Skills");
-                });
-
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.JobApplication", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
-                        .HasAnnotation("SqlServer:IdentitySeed", 1L)
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreationDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 21, 11, 15, 40, 983, DateTimeKind.Local).AddTicks(9437));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(9338));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -368,7 +393,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.ToTable("JobApplications");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.JobInterview", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.JobInterview", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -380,7 +405,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 21, 11, 15, 40, 984, DateTimeKind.Local).AddTicks(542));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 15, 18, 23, 150, DateTimeKind.Local).AddTicks(361));
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime(6)");
@@ -422,7 +447,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.ToTable("JobInterviews");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.JobOpportunity", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.JobOpportunity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -442,7 +467,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 21, 11, 15, 40, 983, DateTimeKind.Local).AddTicks(8165));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(8285));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -466,6 +491,9 @@ namespace Traning_Platfrom_Core.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<int>("JobApplicationStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobFieldId")
                         .HasColumnType("int");
 
                     b.Property<int>("JobLevel")
@@ -515,12 +543,14 @@ namespace Traning_Platfrom_Core.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("JobFieldId");
+
                     b.HasIndex("OrganizationId");
 
                     b.ToTable("JobOpportunities");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.Organization", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.Organization", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -533,10 +563,13 @@ namespace Traning_Platfrom_Core.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("City")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 21, 11, 15, 40, 982, DateTimeKind.Local).AddTicks(6622));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(6372));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -554,6 +587,9 @@ namespace Traning_Platfrom_Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("tinyint(1)")
                         .HasDefaultValue(false);
+
+                    b.Property<int>("JobFieldId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime(6)");
@@ -590,12 +626,14 @@ namespace Traning_Platfrom_Core.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("JobFieldId");
+
                     b.HasIndex("OrganizationAdminId");
 
                     b.ToTable("Organizations");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.OrganizationAdmin", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.OrganizationAdmin", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -607,7 +645,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 21, 11, 15, 40, 982, DateTimeKind.Local).AddTicks(8220));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(7380));
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
@@ -650,6 +688,72 @@ namespace Traning_Platfrom_Core.Migrations
                     b.ToTable("OrganizationAdmins");
                 });
 
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Lookups.JobField", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1L)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)")
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(5481));
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("JobFields");
+                });
+
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Lookups.Skill", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1L)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)")
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(4571));
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Skills");
+                });
+
             modelBuilder.Entity("Traning_Platfrom_Core.Entity.UserConfiguration.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -662,7 +766,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 21, 11, 15, 40, 981, DateTimeKind.Local).AddTicks(6126));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 15, 18, 23, 148, DateTimeKind.Local).AddTicks(8045));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -701,7 +805,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 21, 11, 15, 40, 981, DateTimeKind.Local).AddTicks(5129));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 15, 18, 23, 148, DateTimeKind.Local).AddTicks(6988));
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
@@ -756,7 +860,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 21, 11, 15, 40, 981, DateTimeKind.Local).AddTicks(6978));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 15, 18, 23, 148, DateTimeKind.Local).AddTicks(8965));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -830,9 +934,20 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Navigation("Skill");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.JobApplication", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Client.Testimonial", b =>
                 {
-                    b.HasOne("Traning_Platfrom_Core.Entity.Organization.JobOpportunity", "JobOpportunity")
+                    b.HasOne("Traning_Platfrom_Core.Entity.Client.JobSeeker", "JobSeeker")
+                        .WithMany("Testimonials")
+                        .HasForeignKey("JobSeekerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("JobSeeker");
+                });
+
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.JobApplication", b =>
+                {
+                    b.HasOne("Traning_Platfrom_Core.Entity.Company.JobOpportunity", "JobOpportunity")
                         .WithMany("JobApplications")
                         .HasForeignKey("JobOpportunityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -849,7 +964,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Navigation("JobSeeker");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.JobInterview", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.JobInterview", b =>
                 {
                     b.HasOne("Traning_Platfrom_Core.Entity.Client.JobSeeker", "JobSeeker")
                         .WithMany("JobInterviews")
@@ -857,7 +972,7 @@ namespace Traning_Platfrom_Core.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Traning_Platfrom_Core.Entity.Organization.JobOpportunity", "Opportunity")
+                    b.HasOne("Traning_Platfrom_Core.Entity.Company.JobOpportunity", "Opportunity")
                         .WithMany("JobInterviews")
                         .HasForeignKey("OpportunityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -868,24 +983,40 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Navigation("Opportunity");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.JobOpportunity", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.JobOpportunity", b =>
                 {
-                    b.HasOne("Traning_Platfrom_Core.Entity.Organization.Organization", "Organization")
+                    b.HasOne("Traning_Platfrom_Core.Entity.Lookups.JobField", "JobField")
+                        .WithMany("JobOpportunities")
+                        .HasForeignKey("JobFieldId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Traning_Platfrom_Core.Entity.Company.Organization", "Organization")
                         .WithMany("JobOpportunities")
                         .HasForeignKey("OrganizationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("JobField");
+
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.Organization", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.Organization", b =>
                 {
-                    b.HasOne("Traning_Platfrom_Core.Entity.Organization.OrganizationAdmin", "OrganizationAdmin")
+                    b.HasOne("Traning_Platfrom_Core.Entity.Lookups.JobField", "JobField")
+                        .WithMany("Organizations")
+                        .HasForeignKey("JobFieldId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Traning_Platfrom_Core.Entity.Company.OrganizationAdmin", "OrganizationAdmin")
                         .WithMany("Organizations")
                         .HasForeignKey("OrganizationAdminId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("JobField");
 
                     b.Navigation("OrganizationAdmin");
                 });
@@ -918,22 +1049,31 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Navigation("JobApplications");
 
                     b.Navigation("JobInterviews");
+
+                    b.Navigation("Testimonials");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.JobOpportunity", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.JobOpportunity", b =>
                 {
                     b.Navigation("JobApplications");
 
                     b.Navigation("JobInterviews");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.Organization", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.Organization", b =>
                 {
                     b.Navigation("JobOpportunities");
                 });
 
-            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Organization.OrganizationAdmin", b =>
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Company.OrganizationAdmin", b =>
                 {
+                    b.Navigation("Organizations");
+                });
+
+            modelBuilder.Entity("Traning_Platfrom_Core.Entity.Lookups.JobField", b =>
+                {
+                    b.Navigation("JobOpportunities");
+
                     b.Navigation("Organizations");
                 });
 #pragma warning restore 612, 618

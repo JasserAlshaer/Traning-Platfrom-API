@@ -7,7 +7,7 @@ using Traning_Platfrom_Core.Entity.Client;
 using Traning_Platfrom_Core.Entity.Shared;
 using static Traning_Platfrom_Core.Enums.Enums;
 
-namespace Traning_Platfrom_Core.Entity.Organization
+namespace Traning_Platfrom_Core.Entity.Company
 {
     public class JobInterview : SharedEntity
     {

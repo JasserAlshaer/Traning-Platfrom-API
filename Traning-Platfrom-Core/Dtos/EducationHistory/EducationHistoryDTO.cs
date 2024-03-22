@@ -17,8 +17,8 @@ namespace Traning_Platfrom_Core.Dtos.EducationHistory
         public DateTime? EndDate { get; set; }
         public string? Description { get; set; }
         public string GPA { get; set; }
-        public GradingSystem GradingSystem { get; set; }
-        public EducationCertificationType EducationCertificationType { get; set; }
+        public string GradingSystem { get; set; }
+        public string EducationCertificationType { get; set; }
         public int JobSeekerId { get; set; }
     }
 }

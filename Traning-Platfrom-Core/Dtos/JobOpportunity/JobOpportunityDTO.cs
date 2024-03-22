@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Traning_Platfrom_Core.Entity.Organization;
+using Traning_Platfrom_Core.Entity.Company;
 using static Traning_Platfrom_Core.Enums.Enums;
 
 namespace Traning_Platfrom_Core.Dtos.JobOpportunity

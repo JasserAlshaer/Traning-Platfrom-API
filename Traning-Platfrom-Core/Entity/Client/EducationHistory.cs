@@ -23,5 +23,6 @@ namespace Traning_Platfrom_Core.Entity.Client
         public GradingSystem GradingSystem { get; set; }
         public EducationCertificationType EducationCertificationType { get; set; }
         public virtual JobSeeker JobSeeker { get; set; }
+
     }
 }

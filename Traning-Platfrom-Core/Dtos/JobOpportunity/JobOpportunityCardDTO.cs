@@ -19,5 +19,6 @@ namespace Traning_Platfrom_Core.Dtos.JobOpportunity
         public int OrganizationId { get; set; }
         public string OrganizationName { get; set; }
         public string OrganizationProfileImage { get; set; }
+        public DateTime AppliedDate { get; set; }
     }
 }

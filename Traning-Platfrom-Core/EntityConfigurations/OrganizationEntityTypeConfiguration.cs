@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Traning_Platfrom_Core.Entity.Organization;
+using Traning_Platfrom_Core.Entity.Company;
+using Traning_Platfrom_Core.Entity.Lookups;
 
 namespace Traning_Platfrom_Core.EntityConfigurations
 {
@@ -15,7 +16,7 @@ namespace Traning_Platfrom_Core.EntityConfigurations
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
-            builder.Property(x => x.CreationDate).HasDefaultValue(DateTime.Now);
+                       builder.Property(x => x.CreationDate).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.IsDeleted).HasDefaultValue(false);
             builder.Property(x => x.LastModifiedDate).IsRequired(false);
         }

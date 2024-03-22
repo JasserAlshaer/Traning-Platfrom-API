@@ -12,11 +12,12 @@ namespace Traning_Platfrom_Core.Dtos.Experience
         public int Id { get; set; }
         public string JobTitle { get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
         public string Description { get; set; }
         public string CompanyName { get; set; }
-        public JobLevel JobLevel { get; set; }
-        public JobType JobType { get; set; }
+        public string JobLevel { get; set; }
+        public string JobType { get; set; }
+        public string JobFieldName { get; set; }
         public int JobFieldId { get; set; }
         public int JobSeekerId { get; set; }
     }

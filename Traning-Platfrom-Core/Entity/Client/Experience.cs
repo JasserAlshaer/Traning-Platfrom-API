@@ -14,7 +14,7 @@ namespace Traning_Platfrom_Core.Entity.Client
         
         public string JobTitle { get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
         public string Description { get; set; }
         public string CompanyName { get; set; }
         public JobLevel JobLevel { get; set; }

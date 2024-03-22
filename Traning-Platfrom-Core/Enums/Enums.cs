@@ -8,6 +8,27 @@ namespace Traning_Platfrom_Core.Enums
 {
     public class Enums
     {
+        public enum MaritalStatus
+        {
+            Married,
+            Single,
+            Complicated
+        }
+        public enum Cities
+        {
+            Amman,
+            Zarqa,
+            Irbid,
+            Ajloun,
+            Jerash,
+            Mafraq,
+            Balqa,
+            Madaba,
+            Karak,
+            Tafilah,
+            Maan,
+            Aqaba
+        }
         public enum JobApplicationStatus
         {
             Available,
