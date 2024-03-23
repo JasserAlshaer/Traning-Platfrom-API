@@ -123,7 +123,7 @@ namespace Traning_Platfrom_Infra.Repositaries
                           Address = $"{job.Country} - {job.City} - {job.Region}",
                           JobLocation = job.JobLocation.ToString(),
                           PublishedDate = job.CreationDate,
-                          ExperienceCount = job.ExperienceCount,
+                          ExperienceCount = (int)job.ExperienceCount,
                           JobField = field.Title,
                           Gender = job.Gender.ToString(),
                           EducationCertificationType = job.EducationCertificationType.ToString(),

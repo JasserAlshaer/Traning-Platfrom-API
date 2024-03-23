@@ -52,7 +52,7 @@ namespace Traning_Platfrom_Infra.Repositaries
         public async Task CreateJobInterviewAsync(CreateJobInterviewDTO dto)
         {
             var jobSeeker = await _context.JobSeekers.FirstOrDefaultAsync(x => x.Id == dto.JobSeekerId);
-            var opportunity = await _context.JobOpportunities.FirstOrDefaultAsync(x => x.Id == dto.JonOpportunityId);
+            var opportunity = await _context.JobOpportunities.FirstOrDefaultAsync(x => x.Id == dto.JobOpportunityId);
             JobInterview jobInterview = new JobInterview()
             {
                 Title = dto.Title,
@@ -67,31 +67,34 @@ namespace Traning_Platfrom_Infra.Repositaries
             await _context.SaveChangesAsync();
         }
 
-        public async Task CreateJobOpportunityAsync(CreateJobOpportunityDTO dto)
+        public async Task CreateJobOpportunityAsync(JobOpportunityCardDTO dto)
         {
             var org = await _context.Organizations.FirstOrDefaultAsync(x => x.Id == dto.OrganizationId);
+            var field = await _context.JobFields.FirstOrDefaultAsync(x => x.Id == dto.JobFieldId);
             JobOpportunity jobOpportunity = new JobOpportunity()
             {
                 Title = dto.Title,
                 Description = dto.Description,
                 Country = dto.Country,
                 City = dto.City,
-                Region = dto.Region,
-                Skills = dto.Skills,
-                Responsability = dto.Responsability,
-                JobPrivileges = dto.JobPrivileges,
-                JobLocation = dto.JobLocation,
-                OtherApplicationCondition = dto.OtherApplicationCondition,
-                Gender = dto.Gender,
-                IsMustHaveDrivingLicense = dto.IsMustHaveDrivingLicense,
-                MinAmountOfSkills = dto.MinAmountOfSkills,
-                ExperienceCount = dto.ExperienceCount,
-                MinGPA = dto.MinGPA,
-                EducationCertificationType = dto.EducationCertificationType,
-                JobLevel = dto.JobLevel,
-                JobType = dto.JobType,
-                JobApplicationStatus = dto.JobApplicationStatus,
-                Organization = org
+                EducationCertificationType = (EducationCertificationType)Enum.Parse(typeof(EducationCertificationType), dto.Qualification),
+                JobLevel = (JobLevel)Enum.Parse(typeof(JobLevel), dto.JobLevel),
+                JobType = (JobType)Enum.Parse(typeof(JobType), dto.JobType),
+                JobLocation = (JobLocation)Enum.Parse(typeof(JobLocation), dto.JobLocation),
+                Gender = (Gender)Enum.Parse(typeof(Gender), dto.Gender),
+                Organization = org,
+                JobField=field
+                //Region = dto.Region,
+                //Skills = dto.Skills,
+                //Responsability = dto.Responsability,
+                //JobPrivileges = dto.JobPrivileges,
+                //OtherApplicationCondition = dto.OtherApplicationCondition,
+                //IsMustHaveDrivingLicense = dto.IsMustHaveDrivingLicense,
+                //MinAmountOfSkills = dto.MinAmountOfSkills,
+                //ExperienceCount = dto.ExperienceCount,
+                //MinGPA = dto.MinGPA,
+                //JobApplicationStatus = dto.JobApplicationStatus,
+
             };
             await _context.AddAsync(jobOpportunity);
             await _context.SaveChangesAsync();
@@ -190,6 +193,8 @@ namespace Traning_Platfrom_Infra.Repositaries
             var res = from job in _context.JobOpportunities
                       join org in _context.Organizations
                       on job.Organization.Id equals org.Id
+                      join field in _context.JobFields
+                      on job.JobField.Id equals field.Id
                       where job.IsDeleted == false && org.Id == Id
                       orderby job.CreationDate descending
                       select new JobOpportunityCardDTO
@@ -206,6 +211,11 @@ namespace Traning_Platfrom_Infra.Repositaries
                           OrganizationName = org.Name,
                           OrganizationProfileImage = org.ProfileImage,
                           CreationDate=job.CreationDate,
+                          JobFieldId= field.Id,
+                          JobField= field.Title,
+                          Gender=job.Gender.ToString(),
+                          Qualification=job.EducationCertificationType.ToString(),
+                          JobLocation=job.JobLocation.ToString(),
 
                       };
             var obj = await res.ToListAsync();
@@ -284,30 +294,24 @@ namespace Traning_Platfrom_Infra.Repositaries
             }
         }
 
-        public async Task UpdateJobOpportunityAsync(CreateJobOpportunityDTO dto)
+        public async Task UpdateJobOpportunityAsync(JobOpportunityCardDTO dto)
         {
             var entity = await _context.JobOpportunities.FirstOrDefaultAsync(x => x.Id == dto.Id);
             if (entity != null)
             {
+                var org = await _context.Organizations.FirstOrDefaultAsync(x => x.Id == dto.OrganizationId);
+            var field = await _context.JobFields.FirstOrDefaultAsync(x => x.Id == dto.JobFieldId);
                 entity.Title = dto.Title;
                 entity.Description = dto.Description;
                 entity.Country = dto.Country;
                 entity.City = dto.City;
-                entity.Region = dto.Region;
-                entity.Skills = dto.Skills;
-                entity.Responsability = dto.Responsability;
-                entity.JobPrivileges = dto.JobPrivileges;
-                entity.JobLocation = dto.JobLocation;
-                entity.OtherApplicationCondition = dto.OtherApplicationCondition;
-                entity.Gender = dto.Gender;
-                entity.IsMustHaveDrivingLicense = dto.IsMustHaveDrivingLicense;
-                entity.MinAmountOfSkills = dto.MinAmountOfSkills;
-                entity.ExperienceCount = dto.ExperienceCount;
-                entity.MinGPA = dto.MinGPA;
-                entity.EducationCertificationType = dto.EducationCertificationType;
-                entity.JobLevel = dto.JobLevel;
-                entity.JobType = dto.JobType;
-                entity.JobApplicationStatus = dto.JobApplicationStatus;
+                entity.EducationCertificationType = (EducationCertificationType)Enum.Parse(typeof(EducationCertificationType), dto.Qualification);
+                entity.JobLevel = (JobLevel)Enum.Parse(typeof(JobLevel), dto.JobLevel);
+                entity.JobType = (JobType)Enum.Parse(typeof(JobType), dto.JobType);
+                entity.JobLocation = (JobLocation)Enum.Parse(typeof(JobLocation), dto.JobLocation);
+                entity.Gender = (Gender)Enum.Parse(typeof(Gender), dto.Gender);
+                entity.Organization = org;
+                entity.JobField = field;
                 _context.Update(entity);
                 await _context.SaveChangesAsync();
             }
@@ -316,5 +320,74 @@ namespace Traning_Platfrom_Infra.Repositaries
                 throw new Exception("Experience Not Found");
             }
         }
+
+        public async Task UpdateOrganizationSocialInfoAsync(OrganizationSocialMediaDTO dto)
+        {
+            var profile = await _context.Organizations.FirstOrDefaultAsync(x => x.Id == dto.OrganizationId);
+            if (profile != null)
+            {
+                profile.FaceBookLink = dto.FaceBookLink;
+                profile.LinkdeInLink = dto.LinkedInLink;
+                profile.TwitterLink = dto.TwitterLink;
+                profile.WebsiteUrl = dto.WebsiteUrl;
+                _context.Update(profile);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("Organization Not Found");
+            }
+        }
+        public async Task UpdateOrganizationContactInfoAsync(OrganizationContactDTO dto)
+        {
+            var profile = await _context.Organizations.FirstOrDefaultAsync(x => x.Id == dto.OrganizationId);
+            if (profile != null)
+            {
+                profile.Country = dto.Country;
+                profile.City = (Cities)Enum.Parse(typeof(Cities),dto.City);
+                profile.Address = dto.Address;
+                _context.Update(profile);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("Organization Not Found");
+            }
+        }
+        public async Task UpdateOrganizationProfileImageAsync(OrganizationProfileImageDTO dto)
+        {
+            var profile = await _context.Organizations.FirstOrDefaultAsync(x => x.Id == dto.OrganizationId);
+            if (profile != null)
+            {
+                profile.ProfileImage = dto.Image;
+                _context.Update(profile);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("Organization Not Found");
+            }
+        }
+        public async Task UpdateOrganizationMainInfoAsync(OrganizationMainInfoDTO dto)
+        {
+            var profile = await _context.Organizations.FirstOrDefaultAsync(x => x.Id == dto.OrganizationId);
+            if (profile != null)
+            {
+                profile.Name = dto.Name;
+                profile.Email = dto.Email;
+                profile.Phone = dto.Phone;
+                profile.YearFounded = dto.YearFounded;
+                profile.TeamSize = dto.TeamSize;
+                profile.JobField = await _context.JobFields.FindAsync(dto.CategoryId);
+                profile.Pio = dto.About;
+                _context.Update(profile);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("Organization Not Found");
+            }
+        }
+
     }
 }

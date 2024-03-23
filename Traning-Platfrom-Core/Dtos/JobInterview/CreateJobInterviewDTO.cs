@@ -9,13 +9,13 @@ namespace Traning_Platfrom_Core.Dtos.JobInterview
 {
     public class CreateJobInterviewDTO
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Title { get; set; }
         public string Note { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public InterviewType InterviewType { get; set; }
         public int JobSeekerId { get; set; }
-        public int JonOpportunityId { get; set; }
+        public int JobOpportunityId { get; set; }
     }
 }

@@ -67,7 +67,7 @@ namespace Traning_Platfrom_API.Controllers
         }
         [HttpPost]
         [Route("[action]")]
-        public Task CreateJobOpportunity(CreateJobOpportunityDTO dto)
+        public Task CreateJobOpportunity(JobOpportunityCardDTO dto)
         {
             return _service.CreateJobOpportunityAsync(dto);
         }
@@ -79,9 +79,33 @@ namespace Traning_Platfrom_API.Controllers
         }
         [HttpPut]
         [Route("[action]")]
-        public Task UpdateJobOpportunity(CreateJobOpportunityDTO dto)
+        public Task UpdateJobOpportunity(JobOpportunityCardDTO dto)
         {
             return _service.UpdateJobOpportunityAsync(dto);
+        }
+        [HttpPut]
+        [Route("[action]")]
+        public async Task UpdateOrganizationSocialInfo(OrganizationSocialMediaDTO dto)
+        {
+            await _service.UpdateOrganizationSocialInfoAsync(dto);
+        }
+        [HttpPut]
+        [Route("[action]")]
+        public async Task UpdateOrganizationContactInfo(OrganizationContactDTO dto)
+        {
+            await _service.UpdateOrganizationContactInfoAsync(dto);
+        }
+        [HttpPut]
+        [Route("[action]")]
+        public async Task UpdateOrganizationProfileImage(OrganizationProfileImageDTO dto)
+        {
+            await _service.UpdateOrganizationProfileImageAsync(dto);
+        }
+        [HttpPut]
+        [Route("[action]")]
+        public async Task UpdateOrganizationMainInfo(OrganizationMainInfoDTO dto)
+        {
+            await _service.UpdateOrganizationMainInfoAsync(dto);
         }
         [HttpDelete]
         [Route("[action]")]
