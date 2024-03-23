@@ -20,6 +20,9 @@ namespace Traning_Platfrom_Core.IRepositaries
         Task CreateJobInterviewAsync(CreateJobInterviewDTO dto);
         Task UpdateJobInterviewAsync(CreateJobInterviewDTO dto);
         Task DeleteJobInterviewAsync(int Id);
+        Task<OrganizationStatisticsDTO> GetOrganizationStatisticsAsync(int Id);
+        Task<OrganizationDTO> GetOrganizationDTOAsync(int Id);
+        Task<List<JobOpportunityCardDTO>> GetJobOpportunityByOrganizationIdAsync(int Id);
         Task<List<JobApplicationDetailsDTO>> GetJobApplicationAsync(int Id);
         Task<List<JobApplicationDTO>> GetTopApplicantAsync();
         Task<List<JobInterviewDetailsDTO>> GetAllJobInterviewAsync(int Id);

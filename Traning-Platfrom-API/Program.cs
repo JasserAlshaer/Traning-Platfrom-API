@@ -1,3 +1,7 @@
+using Amazon;
+using Amazon.Extensions.NETCore.Setup;
+using Amazon.Runtime;
+using Amazon.S3;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +33,14 @@ builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IJobSeekerService, JobSeekerService>();
 builder.Services.AddScoped<IOrganizationService, OrganizationService>();
 builder.Services.AddScoped<ISharedService, SharedService>();
+//S3-Configuration
+var awsOptions = new AWSOptions
+{
+    Credentials = new BasicAWSCredentials("1a0545ccf0f738390364c344e40bde6f", "8a54f8987b9ed785bf5f7ca9fa060c91"),
+    Region = RegionEndpoint.GetBySystemName("eu-central-1")
+};
+builder.Services.AddDefaultAWSOptions(awsOptions);
+builder.Services.AddAWSService<IAmazonS3>();
 //swagger with enable for summary 
 builder.Services.AddSwaggerGen(options =>
 {

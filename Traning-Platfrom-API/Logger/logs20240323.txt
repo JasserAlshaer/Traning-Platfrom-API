@@ -1,0 +1,20 @@
+2024-03-23 00:27:28.107 +03:00 [INF] Appliing Configuration
+2024-03-23 00:27:28.255 +03:00 [INF] API Starting Successfully
+2024-03-23 01:06:30.044 +03:00 [INF] Appliing Configuration
+2024-03-23 01:06:30.189 +03:00 [INF] API Starting Successfully
+2024-03-23 01:08:37.665 +03:00 [INF] Appliing Configuration
+2024-03-23 01:08:37.811 +03:00 [INF] API Starting Successfully
+2024-03-23 01:13:35.331 +03:00 [INF] Appliing Configuration
+2024-03-23 01:13:35.453 +03:00 [INF] API Starting Successfully
+2024-03-23 01:32:16.658 +03:00 [INF] Appliing Configuration
+2024-03-23 01:32:16.820 +03:00 [INF] API Starting Successfully
+2024-03-23 01:59:13.985 +03:00 [INF] Appliing Configuration
+2024-03-23 01:59:14.343 +03:00 [INF] API Starting Successfully
+2024-03-23 02:01:05.310 +03:00 [INF] Appliing Configuration
+2024-03-23 02:01:05.553 +03:00 [INF] API Starting Successfully
+2024-03-23 02:34:37.693 +03:00 [INF] Appliing Configuration
+2024-03-23 02:34:37.830 +03:00 [INF] API Starting Successfully
+2024-03-23 02:36:57.322 +03:00 [INF] Appliing Configuration
+2024-03-23 02:36:57.511 +03:00 [INF] API Starting Successfully
+2024-03-23 03:16:15.945 +03:00 [INF] Appliing Configuration
+2024-03-23 03:16:16.106 +03:00 [INF] API Starting Successfully

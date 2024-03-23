@@ -9,6 +9,7 @@ namespace Traning_Platfrom_Core.Dtos.JobOpportunity
 {
     public class JobOpportunityCardDTO
     {
+        public int  Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Country { get; set; }
@@ -20,5 +21,9 @@ namespace Traning_Platfrom_Core.Dtos.JobOpportunity
         public string OrganizationName { get; set; }
         public string OrganizationProfileImage { get; set; }
         public DateTime AppliedDate { get; set; }
+        public DateTime CreationDate { get; set; }
+        public int ApplicationAmount { get; set; }
+        public bool IsThereInterview { get; set; }
+        public int InterviewId       { get; set; }
     }
 }

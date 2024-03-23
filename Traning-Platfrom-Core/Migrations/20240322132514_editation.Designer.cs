@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Traning_Platfrom_Core.Context;
 
@@ -11,9 +12,11 @@ using Traning_Platfrom_Core.Context;
 namespace Traning_Platfrom_Core.Migrations
 {
     [DbContext(typeof(TrainingPlatformDbContext))]
-    partial class TrainingPlatformDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240322132514_editation")]
+    partial class editation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,7 +35,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 22, 21, 58, 59, 42, DateTimeKind.Local).AddTicks(9303));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(1615));
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
@@ -102,7 +105,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 22, 21, 58, 59, 43, DateTimeKind.Local).AddTicks(284));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(2834));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -173,13 +176,14 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 22, 21, 58, 59, 42, DateTimeKind.Local).AddTicks(7875));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 16, 25, 14, 881, DateTimeKind.Local).AddTicks(9954));
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("FaceBook")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("FirstName")
@@ -190,9 +194,11 @@ namespace Traning_Platfrom_Core.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Github")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Instgram")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<bool>("IsDeleted")
@@ -224,6 +230,7 @@ namespace Traning_Platfrom_Core.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("LinkedIn")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Major")
@@ -282,7 +289,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 22, 21, 58, 59, 43, DateTimeKind.Local).AddTicks(1272));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(4264));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -323,7 +330,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 22, 21, 58, 59, 44, DateTimeKind.Local).AddTicks(5575));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 16, 25, 14, 883, DateTimeKind.Local).AddTicks(9633));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -360,7 +367,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 22, 21, 58, 59, 44, DateTimeKind.Local).AddTicks(3449));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 16, 25, 14, 883, DateTimeKind.Local).AddTicks(7402));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -401,7 +408,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 22, 21, 58, 59, 44, DateTimeKind.Local).AddTicks(4552));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 16, 25, 14, 883, DateTimeKind.Local).AddTicks(8566));
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime(6)");
@@ -463,7 +470,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 22, 21, 58, 59, 44, DateTimeKind.Local).AddTicks(2374));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 16, 25, 14, 883, DateTimeKind.Local).AddTicks(6325));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -569,16 +576,18 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 22, 21, 58, 59, 43, DateTimeKind.Local).AddTicks(4747));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(7588));
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("FaceBookLink")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("GitHubLink")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<bool>("IsDeleted")
@@ -593,6 +602,7 @@ namespace Traning_Platfrom_Core.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("LinkdeInLink")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Name")
@@ -623,9 +633,11 @@ namespace Traning_Platfrom_Core.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("TwitterLink")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("WebsiteUrl")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("YearFounded")
@@ -652,7 +664,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 22, 21, 58, 59, 43, DateTimeKind.Local).AddTicks(5740));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(9299));
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
@@ -707,7 +719,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 22, 21, 58, 59, 43, DateTimeKind.Local).AddTicks(3769));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(6584));
 
                     b.Property<string>("Image")
                         .IsRequired()
@@ -742,7 +754,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 22, 21, 58, 59, 43, DateTimeKind.Local).AddTicks(2251));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(5553));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -773,7 +785,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 22, 21, 58, 59, 42, DateTimeKind.Local).AddTicks(5961));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 16, 25, 14, 881, DateTimeKind.Local).AddTicks(7761));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -812,7 +824,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 22, 21, 58, 59, 42, DateTimeKind.Local).AddTicks(4968));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 16, 25, 14, 881, DateTimeKind.Local).AddTicks(6420));
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
@@ -867,7 +879,7 @@ namespace Traning_Platfrom_Core.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2024, 3, 22, 21, 58, 59, 42, DateTimeKind.Local).AddTicks(6836));
+                        .HasDefaultValue(new DateTime(2024, 3, 22, 16, 25, 14, 881, DateTimeKind.Local).AddTicks(8739));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()

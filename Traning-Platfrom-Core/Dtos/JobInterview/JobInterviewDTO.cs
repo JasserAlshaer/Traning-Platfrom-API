@@ -14,6 +14,6 @@ namespace Traning_Platfrom_Core.Dtos.JobInterview
         public string Note { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public InterviewType InterviewType { get; set; }
+        public string InterviewType { get; set; }
     }
 }

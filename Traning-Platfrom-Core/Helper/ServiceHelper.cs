@@ -9,7 +9,7 @@ namespace Traning_Platfrom_Core.Helper
 {
     public static class ServiceHelper
     {
-        public static float CalaucluateAVG(string gpa,GradingSystem gradingSystem)
+        public static float CalculateAVG(string gpa,GradingSystem gradingSystem)
         {
             float mygpa = float.Parse(gpa);
             if(gradingSystem == GradingSystem.OutOf4)
@@ -24,10 +24,6 @@ namespace Traning_Platfrom_Core.Helper
             }
         }
 
-        public static float CalaucluateAVG(string gPA, string gradingSystem)
-        {
-            throw new NotImplementedException();
-        }
 
         public static int CalculateDaysDifference(DateTime startDate, DateTime? endDate)
         {

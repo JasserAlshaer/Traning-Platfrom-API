@@ -17,7 +17,7 @@ namespace Traning_Platfrom_Core.Dtos.Experience
         public string CompanyName { get; set; }
         public string JobLevel { get; set; }
         public string JobType { get; set; }
-        public string JobFieldName { get; set; }
+        public string? JobFieldName { get; set; }
         public int JobFieldId { get; set; }
         public int JobSeekerId { get; set; }
     }

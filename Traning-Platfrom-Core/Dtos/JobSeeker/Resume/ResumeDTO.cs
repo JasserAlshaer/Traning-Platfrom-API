@@ -19,6 +19,7 @@ namespace Traning_Platfrom_Core.Dtos.JobSeeker.Resume
         public string MaritalStatus { get; set; }
         public DateTime DateofBirth { get; set; }
         public string FullAddress { get; set; }
-        public string Gender { get; set; }  
+        public string Gender { get; set; }
+        public string Qualification { get; set; }
     }
 }

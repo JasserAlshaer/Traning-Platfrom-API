@@ -8,8 +8,8 @@ namespace Traning_Platfrom_Core.Dtos.JobApplication
 {
     public class CreateJobApplicationDTO
     {
-        public string Note { get; set; }
+        public string? Note { get; set; }
         public int JobSeekerId { get; set; }
-        public int JonOpportunityId {  get; set; }
+        public int JobOpportunityId {  get; set; }
     }
 }

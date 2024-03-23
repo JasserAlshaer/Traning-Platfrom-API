@@ -135,6 +135,7 @@ namespace Traning_Platfrom_Infra.Repositaries
 
         public async Task<string> LoginAsync(LoginDTO dto)
         {
+            dto.LoginType = await _context.JobSeekers.AnyAsync(x=>x.EmailAddress==dto.Email)? "Cand": "Org";
             if (dto.LoginType.Equals("Cand"))
             {
                 var res = _context.JobSeekers.Where(x=>x.EmailAddress == dto.Email
@@ -161,14 +162,14 @@ namespace Traning_Platfrom_Infra.Repositaries
                         OrganizationId = res.Organizations.FirstOrDefault()?.Id,
                         UserId = res.Id,
                         UserName = res.FirstName + " " + res.LastName,
-                        UserType = "Orfanization"
+                        UserType = "Organization"
                     });
                 }
                 throw new Exception("Login Failed Either Email or Password Is UnCorrect");
             }
             else
             {
-                throw new Exception("Not Allowd Yet");
+                throw new Exception("Not Allowed Yet");
             }
         }
     }

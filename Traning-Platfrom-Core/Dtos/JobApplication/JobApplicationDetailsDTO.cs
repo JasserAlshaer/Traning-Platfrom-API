@@ -13,9 +13,13 @@ namespace Traning_Platfrom_Core.Dtos.JobApplication
         public string JobLevel { get; set; }
         public string JobType { get; set; }
         public string JobSeekerName { get; set; }
+        public string JobSeekerMajor { get; set; }
+        public string JobSeekerQulification { get; set; }
         public string JobSeekerEmail { get; set; }
         public string JobSeekerPhone { get; set; }
         public string JobSeekerImage { get; set; }
         public string JobSeekerResume { get; set; }
+        public int JobSeekerId { get; set; }
+        
     }
 }

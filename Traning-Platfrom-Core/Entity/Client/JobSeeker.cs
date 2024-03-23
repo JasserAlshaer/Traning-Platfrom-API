@@ -31,10 +31,10 @@ namespace Traning_Platfrom_Core.Entity.Client
         public MaritalStatus MaritalStatus { get; set; }
         public string Lanaguage { get; set; }
         public string JobTitle { get; set; }
-        public string FaceBook { get; set; }
-        public string Github { get; set; }
-        public string LinkedIn { get; set; }
-        public string Instgram { get; set; }
+        public string? FaceBook { get; set; }
+        public string? Github { get; set; }
+        public string? LinkedIn { get; set; }
+        public string? Instgram { get; set; }
         public bool IsHaveDrivingLicense { get; set; }
         public string ResumeFilePath { get; set; }
         public string ProfileImagePath { get; set; }

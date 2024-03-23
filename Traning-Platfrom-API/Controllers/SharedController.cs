@@ -40,6 +40,18 @@ namespace Traning_Platfrom_API.Controllers
         }
         [HttpGet]
         [Route("[action]")]
+        public async Task<List<JobOpportunityCardDTO>> GetJobOpportunityByJobFieldIdAsync(int Id)
+        {
+            return await _service.GetJobOpportunityByJobFieldIdAsync(Id);
+        }
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<JobOpportunityDTO> GetJobOpportunityDetailsById(int Id)
+        {
+            return await _service.GetJobOpportunityDetailsByIdAsync(Id);
+        }
+        [HttpGet]
+        [Route("[action]")]
         public async Task<List<OrganizationDTO>> GetOrganization()
         {
             return await _service.GetOrganizationAsync();

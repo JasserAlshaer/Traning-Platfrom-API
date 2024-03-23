@@ -12,7 +12,5 @@ namespace Traning_Platfrom_Core.Dtos.JobSeeker.Profile
         public string Country { get; set; }
         public string City { get; set; }
         public string Address { get; set; }
-        public string Major { get; set; }
-        public string Lanaguage { get; set; }
     }
 }

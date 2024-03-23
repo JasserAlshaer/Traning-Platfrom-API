@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Traning_Platfrom_Core.Migrations
 {
     /// <inheritdoc />
-    public partial class qualificatin : Migration
+    public partial class editation : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,7 +16,7 @@ namespace Traning_Platfrom_Core.Migrations
                 table: "Users",
                 type: "datetime(6)",
                 nullable: false,
-                defaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 148, DateTimeKind.Local).AddTicks(6988),
+                defaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 881, DateTimeKind.Local).AddTicks(6420),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
                 oldDefaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(1029));
@@ -26,7 +26,7 @@ namespace Traning_Platfrom_Core.Migrations
                 table: "UserRoles",
                 type: "datetime(6)",
                 nullable: false,
-                defaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 148, DateTimeKind.Local).AddTicks(8965),
+                defaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 881, DateTimeKind.Local).AddTicks(8739),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
                 oldDefaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(2933));
@@ -36,7 +36,7 @@ namespace Traning_Platfrom_Core.Migrations
                 table: "Testimonials",
                 type: "datetime(6)",
                 nullable: false,
-                defaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 150, DateTimeKind.Local).AddTicks(7266),
+                defaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 883, DateTimeKind.Local).AddTicks(9633),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
                 oldDefaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 596, DateTimeKind.Local).AddTicks(1365));
@@ -46,7 +46,7 @@ namespace Traning_Platfrom_Core.Migrations
                 table: "Skills",
                 type: "datetime(6)",
                 nullable: false,
-                defaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(4571),
+                defaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(5553),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
                 oldDefaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(8305));
@@ -56,7 +56,7 @@ namespace Traning_Platfrom_Core.Migrations
                 table: "Roles",
                 type: "datetime(6)",
                 nullable: false,
-                defaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 148, DateTimeKind.Local).AddTicks(8045),
+                defaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 881, DateTimeKind.Local).AddTicks(7761),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
                 oldDefaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(2059));
@@ -66,17 +66,41 @@ namespace Traning_Platfrom_Core.Migrations
                 table: "Organizations",
                 type: "datetime(6)",
                 nullable: false,
-                defaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(6372),
+                defaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(7588),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
                 oldDefaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(9981));
+
+            //migrationBuilder.AddColumn<string>(
+            //    name: "Country",
+            //    table: "Organizations",
+            //    type: "longtext",
+            //    nullable: false);
+
+            //migrationBuilder.AddColumn<string>(
+            //    name: "Phone",
+            //    table: "Organizations",
+            //    type: "longtext",
+            //    nullable: false);
+
+            //migrationBuilder.AddColumn<string>(
+            //    name: "TeamSize",
+            //    table: "Organizations",
+            //    type: "longtext",
+            //    nullable: false);
+
+            //migrationBuilder.AddColumn<string>(
+            //    name: "WebsiteUrl",
+            //    table: "Organizations",
+            //    type: "longtext",
+            //    nullable: false);
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreationDate",
                 table: "OrganizationAdmins",
                 type: "datetime(6)",
                 nullable: false,
-                defaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(7380),
+                defaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(9299),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
                 oldDefaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 595, DateTimeKind.Local).AddTicks(966));
@@ -86,7 +110,7 @@ namespace Traning_Platfrom_Core.Migrations
                 table: "JobSeekerSkills",
                 type: "datetime(6)",
                 nullable: false,
-                defaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(3548),
+                defaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(4264),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
                 oldDefaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(7330));
@@ -96,7 +120,7 @@ namespace Traning_Platfrom_Core.Migrations
                 table: "JobSeekers",
                 type: "datetime(6)",
                 nullable: false,
-                defaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(4),
+                defaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 881, DateTimeKind.Local).AddTicks(9954),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
                 oldDefaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(3984));
@@ -113,7 +137,7 @@ namespace Traning_Platfrom_Core.Migrations
                 table: "JobOpportunities",
                 type: "datetime(6)",
                 nullable: false,
-                defaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(8285),
+                defaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 883, DateTimeKind.Local).AddTicks(6325),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
                 oldDefaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 595, DateTimeKind.Local).AddTicks(7493));
@@ -123,7 +147,7 @@ namespace Traning_Platfrom_Core.Migrations
                 table: "JobInterviews",
                 type: "datetime(6)",
                 nullable: false,
-                defaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 150, DateTimeKind.Local).AddTicks(361),
+                defaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 883, DateTimeKind.Local).AddTicks(8566),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
                 oldDefaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 595, DateTimeKind.Local).AddTicks(9894));
@@ -133,7 +157,7 @@ namespace Traning_Platfrom_Core.Migrations
                 table: "JobFields",
                 type: "datetime(6)",
                 nullable: false,
-                defaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(5481),
+                defaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(6584),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
                 oldDefaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(9145));
@@ -143,7 +167,7 @@ namespace Traning_Platfrom_Core.Migrations
                 table: "JobApplications",
                 type: "datetime(6)",
                 nullable: false,
-                defaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(9338),
+                defaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 883, DateTimeKind.Local).AddTicks(7402),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
                 oldDefaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 595, DateTimeKind.Local).AddTicks(8536));
@@ -153,7 +177,7 @@ namespace Traning_Platfrom_Core.Migrations
                 table: "Experiences",
                 type: "datetime(6)",
                 nullable: false,
-                defaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(2510),
+                defaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(2834),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
                 oldDefaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(6372));
@@ -163,7 +187,7 @@ namespace Traning_Platfrom_Core.Migrations
                 table: "EducationHistories",
                 type: "datetime(6)",
                 nullable: false,
-                defaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(1427),
+                defaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(1615),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
                 oldDefaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(5392));
@@ -172,6 +196,22 @@ namespace Traning_Platfrom_Core.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropColumn(
+                name: "Country",
+                table: "Organizations");
+
+            migrationBuilder.DropColumn(
+                name: "Phone",
+                table: "Organizations");
+
+            migrationBuilder.DropColumn(
+                name: "TeamSize",
+                table: "Organizations");
+
+            migrationBuilder.DropColumn(
+                name: "WebsiteUrl",
+                table: "Organizations");
+
             migrationBuilder.DropColumn(
                 name: "Qualification",
                 table: "JobSeekers");
@@ -184,7 +224,7 @@ namespace Traning_Platfrom_Core.Migrations
                 defaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(1029),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
-                oldDefaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 148, DateTimeKind.Local).AddTicks(6988));
+                oldDefaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 881, DateTimeKind.Local).AddTicks(6420));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreationDate",
@@ -194,7 +234,7 @@ namespace Traning_Platfrom_Core.Migrations
                 defaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(2933),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
-                oldDefaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 148, DateTimeKind.Local).AddTicks(8965));
+                oldDefaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 881, DateTimeKind.Local).AddTicks(8739));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreationDate",
@@ -204,7 +244,7 @@ namespace Traning_Platfrom_Core.Migrations
                 defaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 596, DateTimeKind.Local).AddTicks(1365),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
-                oldDefaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 150, DateTimeKind.Local).AddTicks(7266));
+                oldDefaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 883, DateTimeKind.Local).AddTicks(9633));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreationDate",
@@ -214,7 +254,7 @@ namespace Traning_Platfrom_Core.Migrations
                 defaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(8305),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
-                oldDefaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(4571));
+                oldDefaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(5553));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreationDate",
@@ -224,7 +264,7 @@ namespace Traning_Platfrom_Core.Migrations
                 defaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(2059),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
-                oldDefaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 148, DateTimeKind.Local).AddTicks(8045));
+                oldDefaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 881, DateTimeKind.Local).AddTicks(7761));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreationDate",
@@ -234,7 +274,7 @@ namespace Traning_Platfrom_Core.Migrations
                 defaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(9981),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
-                oldDefaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(6372));
+                oldDefaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(7588));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreationDate",
@@ -244,7 +284,7 @@ namespace Traning_Platfrom_Core.Migrations
                 defaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 595, DateTimeKind.Local).AddTicks(966),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
-                oldDefaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(7380));
+                oldDefaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(9299));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreationDate",
@@ -254,7 +294,7 @@ namespace Traning_Platfrom_Core.Migrations
                 defaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(7330),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
-                oldDefaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(3548));
+                oldDefaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(4264));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreationDate",
@@ -264,7 +304,7 @@ namespace Traning_Platfrom_Core.Migrations
                 defaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(3984),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
-                oldDefaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(4));
+                oldDefaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 881, DateTimeKind.Local).AddTicks(9954));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreationDate",
@@ -274,7 +314,7 @@ namespace Traning_Platfrom_Core.Migrations
                 defaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 595, DateTimeKind.Local).AddTicks(7493),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
-                oldDefaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(8285));
+                oldDefaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 883, DateTimeKind.Local).AddTicks(6325));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreationDate",
@@ -284,7 +324,7 @@ namespace Traning_Platfrom_Core.Migrations
                 defaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 595, DateTimeKind.Local).AddTicks(9894),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
-                oldDefaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 150, DateTimeKind.Local).AddTicks(361));
+                oldDefaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 883, DateTimeKind.Local).AddTicks(8566));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreationDate",
@@ -294,7 +334,7 @@ namespace Traning_Platfrom_Core.Migrations
                 defaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(9145),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
-                oldDefaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(5481));
+                oldDefaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(6584));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreationDate",
@@ -304,7 +344,7 @@ namespace Traning_Platfrom_Core.Migrations
                 defaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 595, DateTimeKind.Local).AddTicks(8536),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
-                oldDefaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(9338));
+                oldDefaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 883, DateTimeKind.Local).AddTicks(7402));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreationDate",
@@ -314,7 +354,7 @@ namespace Traning_Platfrom_Core.Migrations
                 defaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(6372),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
-                oldDefaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(2510));
+                oldDefaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(2834));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreationDate",
@@ -324,7 +364,7 @@ namespace Traning_Platfrom_Core.Migrations
                 defaultValue: new DateTime(2024, 3, 22, 0, 26, 49, 594, DateTimeKind.Local).AddTicks(5392),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime(6)",
-                oldDefaultValue: new DateTime(2024, 3, 22, 15, 18, 23, 149, DateTimeKind.Local).AddTicks(1427));
+                oldDefaultValue: new DateTime(2024, 3, 22, 16, 25, 14, 882, DateTimeKind.Local).AddTicks(1615));
         }
     }
 }

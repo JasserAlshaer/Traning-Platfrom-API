@@ -17,6 +17,7 @@ namespace Traning_Platfrom_Core.IRepositaries
     public interface ISharedService
     {
         Task<List<JobOpportunityCardDTO>> GetJobOpportunityAsync();
+        Task<List<JobOpportunityCardDTO>> GetJobOpportunityByJobFieldIdAsync(int Id);
         Task<List<OrganizationDTO>> GetOrganizationAsync();
         Task<List<OrganizationCardDTO>> GetTopOrganizationAsync();
         Task<List<Skill>> GetSkillsAsync();
@@ -24,5 +25,6 @@ namespace Traning_Platfrom_Core.IRepositaries
         Task<List<TestimonalDTO>> GetTestimonialsAsync();
         Task<AboutUsDTO>GetAboutUsDTOAsync();
         Task<List<TopJobSeekerDTO>> GetTopJobSeekersAsync();
+        Task<JobOpportunityDTO> GetJobOpportunityDetailsByIdAsync(int Id);
     }
 }

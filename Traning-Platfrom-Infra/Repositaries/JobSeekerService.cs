@@ -11,6 +11,7 @@ using Traning_Platfrom_Core.Dtos.JobApplication;
 using Traning_Platfrom_Core.Dtos.JobInterview;
 using Traning_Platfrom_Core.Dtos.JobOpportunity;
 using Traning_Platfrom_Core.Dtos.JobSeeker;
+using Traning_Platfrom_Core.Dtos.JobSeeker.Profile;
 using Traning_Platfrom_Core.Dtos.JobSeeker.Resume;
 using Traning_Platfrom_Core.Dtos.Skills;
 using Traning_Platfrom_Core.Entity.Client;
@@ -64,7 +65,7 @@ namespace Traning_Platfrom_Infra.Repositaries
                     EndDate = dto.EndDate,
                     Description = dto.Description,
                     GPA = dto.GPA,
-                    GPAInPercentage = ServiceHelper.CalaucluateAVG(dto.GPA, dto.GradingSystem),
+                    GPAInPercentage = ServiceHelper.CalculateAVG(dto.GPA, (GradingSystem)Enum.Parse(typeof(GradingSystem), dto.GradingSystem)),
                     GradingSystem = (GradingSystem)Enum.Parse(typeof(GradingSystem), dto.GradingSystem),
                     EducationCertificationType = (EducationCertificationType)Enum.Parse(typeof(EducationCertificationType), dto.EducationCertificationType),
                     JobSeeker = profile
@@ -272,6 +273,7 @@ namespace Traning_Platfrom_Infra.Repositaries
                           JobLevel = exp.JobLevel.ToString(),
                           JobType = exp.JobType.ToString(),
                           JobFieldName = field.Title,
+                          JobFieldId = field.Id,
                           JobSeekerId = Id,
                       };
             return await res.ToListAsync();
@@ -298,7 +300,9 @@ namespace Traning_Platfrom_Infra.Repositaries
                           City = jobseeker.City,
                           Address = jobseeker.Address,
                           Major = jobseeker.Major,
-                          Lanaguage = jobseeker.Lanaguage,
+                          Lanaguage = jobseeker.Lanaguage.ToString(),
+                          Image=jobseeker.ProfileImagePath,
+                          ResumeFilePath=jobseeker.ResumeFilePath,
                       };
             return await res.SingleAsync();
         }
@@ -320,15 +324,10 @@ namespace Traning_Platfrom_Infra.Repositaries
                           DateofBirth = jobseeker.BirthDate,
                           FullAddress = jobseeker.Address,
                           Gender = jobseeker.Gender.ToString(),
+                          Qualification = jobseeker.Qualification.ToString(),
                       };
             return await res.SingleAsync();
         }
-
-        public async Task<List<JobInterviewDTO>> GetMyInterviewAsync()
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<List<JobOpportunityCardDTO>> GetMyJobApplicationAsync(int Id)
         {
             var res = from job in _context.JobOpportunities
@@ -343,6 +342,7 @@ namespace Traning_Platfrom_Infra.Repositaries
                       orderby job.CreationDate descending
                       select new JobOpportunityCardDTO
                       {
+                          Id = job.Id,
                           Title = job.Title,
                           Description = job.Description,
                           Country = job.Country,
@@ -355,25 +355,56 @@ namespace Traning_Platfrom_Infra.Repositaries
                           OrganizationProfileImage = org.ProfileImage,
                           AppliedDate = application.CreationDate
                       };
-            return await res.ToListAsync();
+            var obj = await res.ToListAsync();
+            if(obj != null)
+            {
+                foreach( var item in obj)
+                {
+                    var interview = await _context.JobInterviews.FirstOrDefaultAsync(x => x.Opportunity.Id == item.Id);
+                    if (interview != null)
+                    {
+                        item.InterviewId= interview.Id;
+                        item.IsThereInterview = true;
+                    }
+                    else
+                    {
+                        item.IsThereInterview = false;
+                    }
+                }
+            }
+            return obj;
         }
-
-
-
+        public async Task<JobInterviewDTO> GetMyInterviewByIdAsync(int Id)
+        {
+            var res = from meeting in _context.JobInterviews
+                      where meeting.Id == Id
+                      select new JobInterviewDTO
+                      {
+                          Id = Id,
+                          Title=meeting.Title,
+                          InterviewType=meeting.InterviewType.ToString(),
+                          Note=meeting.Note,
+                          StartDate = meeting.StartDate,
+                          EndDate = meeting.EndDate
+                      };
+            return await res.SingleOrDefaultAsync();
+        }
         public async Task SendJobApplicationAsync(CreateJobApplicationDTO dto)
         {
             var profile = await _context.JobSeekers.FirstOrDefaultAsync(x => x.Id == dto.JobSeekerId);
             if (profile != null)
             {
-                var entity = await _context.JobOpportunities.FirstOrDefaultAsync(x => x.Id == dto.JonOpportunityId);
+                var entity = await _context.JobOpportunities.FirstOrDefaultAsync(x => x.Id == dto.JobOpportunityId);
                 if (entity != null)
                 {
                     JobApplication jobApplication = new JobApplication()
                     {
-                        Note = dto.Note,
+                        Note = "",//dto.Note,
                         JobSeeker = profile,
                         JobOpportunity = entity,
                     };
+                    await _context.JobApplications.AddAsync(jobApplication);
+                    await _context.SaveChangesAsync();
                 }
                 else
                 {
@@ -386,7 +417,18 @@ namespace Traning_Platfrom_Infra.Repositaries
                 throw new Exception("JobSeeker Not Found");
             }
         }
-
+        public async Task<string> CheckIfPreAppliedByJobIdAndJobSeekerIdAsync(int jobId, int jobSeekerId)
+        {
+            var application = await _context.JobApplications.FirstOrDefaultAsync(x => x.JobSeeker.Id == jobSeekerId && x.JobOpportunity.Id == jobId);
+            if (application != null)
+            {
+                return "No";
+            }
+            else
+            {
+                return "YES";
+            }
+        }
         public async Task UpdateEducationHistoryAsync(EducationHistoryDTO dto)
         {
             var entity = await _context.EducationHistories.FirstOrDefaultAsync(x => x.Id == dto.Id);
@@ -399,7 +441,7 @@ namespace Traning_Platfrom_Infra.Repositaries
                 entity.EndDate = dto.EndDate;
                 entity.Description = dto.Description;
                 entity.GPA = dto.GPA;
-                entity.GPAInPercentage = ServiceHelper.CalaucluateAVG(dto.GPA, dto.GradingSystem);
+                entity.GPAInPercentage = ServiceHelper.CalculateAVG(dto.GPA, (GradingSystem)Enum.Parse(typeof(GradingSystem), dto.GradingSystem));
                 entity.GradingSystem = (GradingSystem)Enum.Parse(typeof(GradingSystem), dto.GradingSystem);
                 entity.EducationCertificationType = (EducationCertificationType)Enum.Parse(typeof(EducationCertificationType), dto.EducationCertificationType);
                 _context.Update(entity);
@@ -429,6 +471,115 @@ namespace Traning_Platfrom_Infra.Repositaries
             else
             {
                 throw new Exception("Experience Not Found");
+            }
+        }
+
+        public async Task UpdateJobSeekerContactInfoAsync(ContactDTO dto)
+        {
+            var profile = await _context.JobSeekers.FirstOrDefaultAsync(x => x.Id == dto.JobSeekerId);
+            if (profile != null)
+            {
+                profile.Country = dto.Country;
+                profile.City = dto.City;
+                profile.Address = dto.Address;
+                _context.Update(profile);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("JobSeeker Not Found");
+            }
+        }
+        public async Task UpdateJobSeekerMainInfoAsync(MainInfoDTO dto)
+        {
+            var profile = await _context.JobSeekers.FirstOrDefaultAsync(x => x.Id == dto.JobSeekerId);
+            if (profile != null)
+            {
+                profile.FirstName = dto.FirstName;
+                profile.SecondName = dto.SecondName;
+                profile.LastName = dto.LastName;
+                profile.EmailAddress = dto.Email;
+                profile.Phone = dto.Phone;
+                profile.Major = dto.Major;
+                profile.Lanaguage = dto.Lanaguage;
+                profile.ProfileBio = dto.Pio;
+                _context.Update(profile);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("JobSeeker Not Found");
+            }
+        }
+
+        public async Task UpdateJobSeekerProfileImageAsync(ProfileImageDTO dto)
+        {
+            var profile = await _context.JobSeekers.FirstOrDefaultAsync(x => x.Id == dto.JobSeekerId);
+            if (profile != null)
+            {
+                profile.ProfileImagePath = dto.Image;
+                _context.Update(profile);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("JobSeeker Not Found");
+            }
+        }
+        public async Task UpdateJobSeekerProfileResumeFileAsync(ProfileResumeDTO dto)
+        {
+            var profile = await _context.JobSeekers.FirstOrDefaultAsync(x => x.Id == dto.JobSeekerId);
+            if (profile != null)
+            {
+                profile.ResumeFilePath = dto.File;
+                _context.Update(profile);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("JobSeeker Not Found");
+            }
+        }
+        public async Task UpdateJobSeekerResumeInfoAsync(ResumeDTO dto)
+        {
+            var profile = await _context.JobSeekers.FirstOrDefaultAsync(x => x.Id == dto.JobSeekerId);
+            if (profile != null)
+            {
+                profile.FirstName = dto.FirstName;
+                profile.SecondName = dto.SecondName;
+                profile.LastName = dto.LastName;
+                profile.Phone = dto.Phone;
+                profile.EmailAddress = dto.Email;
+                profile.BirthDate = dto.DateofBirth;
+                profile.Gender = (Gender)Enum.Parse(typeof(Gender), dto.Gender);
+                profile.MaritalStatus = (MaritalStatus)Enum.Parse(typeof(MaritalStatus), dto.MaritalStatus);
+                profile.Nationality = dto.Nationality;
+                profile.Qualification = (EducationCertificationType)Enum.Parse(typeof(EducationCertificationType), dto.Qualification);
+                _context.Update(profile);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("JobSeeker Not Found");
+            }
+        }
+
+
+        public async Task UpdateJobSeekerSocialInfoAsync(SocialMediaDTO dto)
+        {
+            var profile = await _context.JobSeekers.FirstOrDefaultAsync(x => x.Id == dto.JobSeekerId);
+            if (profile != null)
+            {
+                profile.FaceBook = dto.FaceBook;
+                profile.Instgram = dto.Instgram;
+                profile.LinkedIn = dto.LinkedIn;
+                profile.Github = dto.Github;
+                _context.Update(profile);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("JobSeeker Not Found");
             }
         }
     }

@@ -24,5 +24,7 @@ namespace Traning_Platfrom_Core.Dtos.JobSeeker
         public string Address { get; set; }
         public string Major { get; set; }
         public string Lanaguage { get; set; }
+        public string Image { get; set; }
+        public string ResumeFilePath { get; set; }
     }
 }

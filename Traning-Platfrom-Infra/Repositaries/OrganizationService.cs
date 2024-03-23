@@ -166,20 +166,98 @@ namespace Traning_Platfrom_Infra.Repositaries
                       on job.Organization.Id equals org.Id
                       join jobseeker in _context.JobSeekers
                       on application.JobSeeker.Id equals jobseeker.Id
-                      where org.Id == Id
+                      where job.Id == Id
                       select new JobApplicationDetailsDTO
                       {
                           Id = job.Id,
                           JobLevel = job.JobLevel.ToString(),
                           JobOpportunityTitle = job.Title,
                           JobType = job.JobType.ToString(),
+                          JobSeekerId = jobseeker.Id,
                           JobSeekerName = $"{jobseeker.FirstName} {jobseeker.SecondName} {jobseeker.LastName}",
                           JobSeekerEmail = jobseeker.EmailAddress,
                           JobSeekerPhone = jobseeker.Phone,
                           JobSeekerImage = jobseeker.ProfileImagePath,
-                          JobSeekerResume = jobseeker.ResumeFilePath
+                          JobSeekerResume = jobseeker.ResumeFilePath,
+                          JobSeekerMajor = jobseeker.Major,
+                          JobSeekerQulification=jobseeker.Qualification.ToString(), 
                       };
             return await res.ToListAsync();
+        }
+
+        public async Task<List<JobOpportunityCardDTO>> GetJobOpportunityByOrganizationIdAsync(int Id)
+        {
+            var res = from job in _context.JobOpportunities
+                      join org in _context.Organizations
+                      on job.Organization.Id equals org.Id
+                      where job.IsDeleted == false && org.Id == Id
+                      orderby job.CreationDate descending
+                      select new JobOpportunityCardDTO
+                      {
+                          Id= job.Id,
+                          Title = job.Title,
+                          Description = job.Description,
+                          Country = job.Country,
+                          City = job.City,
+                          Region = job.Region,
+                          JobLevel = job.JobLevel.ToString(),
+                          JobType = job.JobType.ToString(),
+                          OrganizationId = org.Id,
+                          OrganizationName = org.Name,
+                          OrganizationProfileImage = org.ProfileImage,
+                          CreationDate=job.CreationDate,
+
+                      };
+            var obj = await res.ToListAsync();
+            foreach(var item in obj) {
+                item.ApplicationAmount = await _context.JobApplications.Where(x =>x.JobOpportunity.Id == item.Id &&x.JobOpportunity.Organization.Id == Id).CountAsync();
+            }
+            return obj;
+        }
+
+        public async Task<OrganizationDTO> GetOrganizationDTOAsync(int Id)
+        {
+            var res = from org in _context.Organizations
+                      join field in _context.JobFields
+                      on org.JobField.Id equals field.Id
+                      where org.IsDeleted == false && org.Id == Id
+                      orderby org.CreationDate descending
+                      select new OrganizationDTO
+                      {
+                          Id=org.Id,
+                          Name = org.Name,
+                          Pio = org.Pio,
+                          Address = org.Address,
+                          Email = org.Email,
+                          Phone=org.Phone,
+                          ProfileImage = org.ProfileImage,
+                          PreviewVideoPath = org.PreviewVideoPath,
+                          YearFounded = org.YearFounded,
+                          GitHubLink = org.GitHubLink,
+                          FaceBookLink = org.FaceBookLink,
+                          TwitterLink = org.TwitterLink,
+                          LinkdeInLink = org.LinkdeInLink,
+                          JobField = field.Title,
+                          TeamSize=org.TeamSize,
+                          City=org.City.ToString(),
+                          Country=org.Country.ToString(),
+                          WebsiteUrl=org.WebsiteUrl,
+                          jobFieldId=field.Id,
+                      };
+            var obj = await res.SingleOrDefaultAsync();
+            obj.JobsCount = await _context.JobOpportunities.Where(x => x.Organization.Id == Id).CountAsync();
+            return obj;
+        }
+
+        public async Task<OrganizationStatisticsDTO> GetOrganizationStatisticsAsync(int Id)
+        {
+            OrganizationStatisticsDTO statisticsDTO = new OrganizationStatisticsDTO();
+            statisticsDTO.Notifications = 0;
+            statisticsDTO.Applications = await _context.JobApplications.Where(x=>x.JobOpportunity.Organization.Id==Id).CountAsync();
+            statisticsDTO.Jobs = await _context.JobOpportunities.Where(x => x.Organization.Id == Id).CountAsync();
+            statisticsDTO.Interview = await _context.JobInterviews.Where(x => x.Opportunity.Organization.Id == Id).CountAsync();
+
+            return statisticsDTO;
         }
 
         public async Task<List<JobApplicationDTO>> GetTopApplicantAsync()

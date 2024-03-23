@@ -19,6 +19,7 @@ using static Traning_Platfrom_Core.Enums.Enums;
 using Traning_Platfrom_Core.Dtos.StaticPage;
 using Traning_Platfrom_Core.Dtos.JobSeeker;
 using Traning_Platfrom_Core.Helper;
+using System.Text.Json;
 
 namespace Traning_Platfrom_Infra.Repositaries
 {
@@ -32,7 +33,7 @@ namespace Traning_Platfrom_Infra.Repositaries
 
         public async Task<AboutUsDTO> GetAboutUsDTOAsync()
         {
-            AboutUsDTO aboutUsDTO=new AboutUsDTO();
+            AboutUsDTO aboutUsDTO = new AboutUsDTO();
             aboutUsDTO.OrganizationCount = await _context.Organizations.Where(x => x.IsDeleted == false).CountAsync();
             aboutUsDTO.JobCount = await _context.JobOpportunities.Where(x => x.IsDeleted == false).CountAsync();
             aboutUsDTO.JobSeekerCount = await _context.JobSeekers.Where(x => x.IsDeleted == false).CountAsync();
@@ -64,6 +65,7 @@ namespace Traning_Platfrom_Infra.Repositaries
                       orderby job.CreationDate descending
                       select new JobOpportunityCardDTO
                       {
+                          Id = job.Id,
                           Title = job.Title,
                           Description = job.Description,
                           Country = job.Country,
@@ -78,6 +80,102 @@ namespace Traning_Platfrom_Infra.Repositaries
             return await res.ToListAsync();
         }
 
+        public async Task<List<JobOpportunityCardDTO>> GetJobOpportunityByJobFieldIdAsync(int Id)
+        {
+            var res = from job in _context.JobOpportunities
+                      join org in _context.Organizations
+                      on job.Organization.Id equals org.Id
+                      where job.IsDeleted == false
+                      && job.JobField.Id == Id
+                      orderby job.CreationDate descending
+                      select new JobOpportunityCardDTO
+                      {
+                          Id=job.Id,
+                          Title = job.Title,
+                          Description = job.Description,
+                          Country = job.Country,
+                          City = job.City,
+                          Region = job.Region,
+                          JobLevel = job.JobLevel.ToString(),
+                          JobType = job.JobType.ToString(),
+                          OrganizationId = org.Id,
+                          OrganizationName = org.Name,
+                          OrganizationProfileImage = org.ProfileImage
+                      };
+            return await res.ToListAsync();
+        }
+
+        public async Task<JobOpportunityDTO> GetJobOpportunityDetailsByIdAsync(int Id)
+        {
+            var res = from job in _context.JobOpportunities
+                      join org in _context.Organizations
+                      on job.Organization.Id equals org.Id
+                      join field in _context.JobFields
+                      on job.JobField.Id equals field.Id
+                      where job.IsDeleted == false
+                      && job.Id == Id
+                      orderby job.CreationDate descending
+                      select new JobOpportunityDTO
+                      {
+                          Id = job.Id,
+                          Title = job.Title,
+                          Description = job.Description,
+                          Address = $"{job.Country} - {job.City} - {job.Region}",
+                          JobLocation = job.JobLocation.ToString(),
+                          PublishedDate = job.CreationDate,
+                          ExperienceCount = job.ExperienceCount,
+                          JobField = field.Title,
+                          Gender = job.Gender.ToString(),
+                          EducationCertificationType = job.EducationCertificationType.ToString(),
+                          JobLevel = job.JobLevel.ToString(),
+                          JobType = job.JobType.ToString(),
+                          OrganizationName = org.Name,
+                          OrganizationProfileImage = org.ProfileImage,
+                          SkillsString = job.Skills,
+                          ResponsabilityString = job.Responsability,
+                          JobPrivilegesString = job.JobPrivileges,
+                          OtherApplicationConditionString = job.OtherApplicationCondition
+                      };
+            var obj = await res.SingleOrDefaultAsync();
+            if (obj != null)
+            {
+                if (!string.IsNullOrEmpty(obj.SkillsString) && obj.SkillsString.Contains("["))
+                {
+                    obj.Skills = JsonSerializer.Deserialize<List<string>>(obj.SkillsString);
+                }
+                else
+                {
+                    obj.Skills = new List<string>();
+                }
+                if (!string.IsNullOrEmpty(obj.ResponsabilityString) && obj.ResponsabilityString.Contains("["))
+                {
+                    obj.Responsability = JsonSerializer.Deserialize<List<string>>(obj.ResponsabilityString);
+                }
+                else
+                {
+                    obj.Responsability = new List<string>();
+                }
+                if (!string.IsNullOrEmpty(obj.JobPrivilegesString) && obj.JobPrivilegesString.Contains("["))
+                {
+                    obj.JobPrivileges = JsonSerializer.Deserialize<List<string>>(obj.JobPrivilegesString);
+
+                }
+                else
+                {
+                    obj.JobPrivileges = new List<string>();
+                }
+                if (!string.IsNullOrEmpty(obj.OtherApplicationConditionString) && obj.OtherApplicationConditionString.Contains("["))
+                {
+                    obj.OtherApplicationCondition = JsonSerializer.Deserialize<List<string>>(obj.OtherApplicationConditionString);
+                }
+                else
+                {
+                    obj.OtherApplicationCondition = new List<string>();
+                }
+            }
+            return obj;
+        }
+
         public async Task<List<OrganizationDTO>> GetOrganizationAsync()
         {
             var res = from org in _context.Organizations
@@ -85,6 +183,7 @@ namespace Traning_Platfrom_Infra.Repositaries
                       orderby org.CreationDate descending
                       select new OrganizationDTO
                       {
+                          Id = org.Id,
                           Name = org.Name,
                           Pio = org.Pio,
                           Address = org.Address,
@@ -131,23 +230,23 @@ namespace Traning_Platfrom_Infra.Repositaries
                       where jobseeker.IsDeleted == false
                       select new TopJobSeekerDTO
                       {
-                          Id=jobseeker.Id,  
-                          Image=jobseeker.ProfileImagePath,
-                          JobTitle = jobseeker.JobTitle,    
+                          Id = jobseeker.Id,
+                          Image = jobseeker.ProfileImagePath,
+                          JobTitle = jobseeker.JobTitle,
                           Name = $"{jobseeker.FirstName} {jobseeker.SecondName} {jobseeker.LastName}"
                       };
-            var list= await res.ToListAsync();
+            var list = await res.ToListAsync();
             foreach (var item in list)
             {
-                var experinices =await _context.Experiences.Where(x => x.JobSeeker.Id == item.Id).ToListAsync();
+                var experinices = await _context.Experiences.Where(x => x.JobSeeker.Id == item.Id).ToListAsync();
                 int sum = 0;
-                foreach(var ex in experinices)
+                foreach (var ex in experinices)
                 {
                     sum += ServiceHelper.CalculateDaysDifference(ex.StartDate, ex.EndDate);
                 }
                 item.ExperienceInDays = sum;
             }
-            return list.OrderByDescending(x=>x.ExperienceInDays).Take(4).ToList();
+            return list.OrderByDescending(x => x.ExperienceInDays).Take(4).ToList();
         }
 
         public async Task<List<OrganizationCardDTO>> GetTopOrganizationAsync()
@@ -159,11 +258,11 @@ namespace Traning_Platfrom_Infra.Repositaries
                       orderby org.CreationDate descending
                       select new OrganizationCardDTO
                       {
-                          Id= org.Id,
-                          Name= org.Name,
-                          City=org.City.ToString(),
-                          Field= field.Title,
-                          Image=org.ProfileImage
+                          Id = org.Id,
+                          Name = org.Name,
+                          City = org.City.ToString(),
+                          Field = field.Title,
+                          Image = org.ProfileImage
                       };
             return await res.ToListAsync();
         }

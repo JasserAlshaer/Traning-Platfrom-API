@@ -15,5 +15,7 @@ namespace Traning_Platfrom_Core.Dtos.JobSeeker.Profile
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Pio { get; set; }
+        public string Lanaguage { get; set; }
+        public string Major { get; set; }
     }
 }

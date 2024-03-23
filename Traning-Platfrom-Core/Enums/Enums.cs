@@ -102,11 +102,19 @@ namespace Traning_Platfrom_Core.Enums
             PHD,
             Prof
         }
+        public enum Qualification
+        {
+            HighSchoolCertificate,
+            Bachelor,
+            Master,
+            PHD,
+        }
         public enum GradingSystem
         {
             OutOf4,
             OutOf100,
-            Outof5
+            Outof5,
+            SuccessOrFailed
         }
     }
 }

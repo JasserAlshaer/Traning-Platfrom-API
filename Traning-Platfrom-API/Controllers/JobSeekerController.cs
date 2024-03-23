@@ -6,6 +6,7 @@ using Traning_Platfrom_Core.Dtos.JobApplication;
 using Traning_Platfrom_Core.Dtos.JobInterview;
 using Traning_Platfrom_Core.Dtos.JobOpportunity;
 using Traning_Platfrom_Core.Dtos.JobSeeker;
+using Traning_Platfrom_Core.Dtos.JobSeeker.Profile;
 using Traning_Platfrom_Core.Dtos.JobSeeker.Resume;
 using Traning_Platfrom_Core.Dtos.Skills;
 using Traning_Platfrom_Core.IRepositaries;
@@ -23,9 +24,9 @@ namespace Traning_Platfrom_API.Controllers
         }
         [HttpGet]
         [Route("[action]")]
-        public Task<List<JobInterviewDTO>> GetMyInterview()
+        public async Task<JobInterviewDTO> GetMyInterviewById(int Id)
         {
-            return _service.GetMyInterviewAsync();
+            return await _service.GetMyInterviewByIdAsync(Id);
         }
         [HttpGet]
         [Route("[action]")]
@@ -63,65 +64,107 @@ namespace Traning_Platfrom_API.Controllers
         {
             return await _service.GetJobSeekerEducationHistoryByIdAsync(Id);
         }
-        [HttpPost]
+        [HttpGet]
         [Route("[action]")]
-        public Task CompleteProfile(CompleteJobSeekerProfileDTO dto)
+        public async Task<string> CheckIfPreAppliedByJobIdAndJobSeekerId(int jobId, int jobSeekerId)
         {
-            return _service.CompleteProfileAsync(dto);
+            return await _service.CheckIfPreAppliedByJobIdAndJobSeekerIdAsync(jobId, jobSeekerId);
         }
         [HttpPost]
         [Route("[action]")]
-        public Task CreateEducationHistory(EducationHistoryDTO dto)
+        public async Task CompleteProfile(CompleteJobSeekerProfileDTO dto)
         {
-            return _service.CreateEducationHistoryAsync(dto);
+            await _service.CompleteProfileAsync(dto);
         }
         [HttpPost]
         [Route("[action]")]
-        public Task CreateExperience(ExperienceDTO dto)
+        public async Task CreateEducationHistory(EducationHistoryDTO dto)
         {
-            return _service.CreateExperienceAsync(dto);
+            await _service.CreateEducationHistoryAsync(dto);
         }
         [HttpPost]
         [Route("[action]")]
-        public Task CreateJobSeekerSkill(CreateJobSeekerSkill dto)
+        public async Task CreateExperience(ExperienceDTO dto)
         {
-            return _service.CreateJobSeekerSkillAsync(dto);
+            await _service.CreateExperienceAsync(dto);
         }
         [HttpPost]
         [Route("[action]")]
-        public Task SendJobApplication(CreateJobApplicationDTO dto)
+        public async Task CreateJobSeekerSkill(CreateJobSeekerSkill dto)
         {
-            return _service.SendJobApplicationAsync(dto);
+            await _service.CreateJobSeekerSkillAsync(dto);
+        }
+        [HttpPost]
+        [Route("[action]")]
+        public async Task SendJobApplication(CreateJobApplicationDTO dto)
+        {
+            await _service.SendJobApplicationAsync(dto);
         }
         [HttpPut]
         [Route("[action]")]
-        public Task UpdateEducationHistory(EducationHistoryDTO dto)
+        public async Task UpdateEducationHistory(EducationHistoryDTO dto)
         {
-            return _service.UpdateEducationHistoryAsync(dto);
+            await _service.UpdateEducationHistoryAsync(dto);
         }
         [HttpPut]
         [Route("[action]")]
-        public Task UpdateExperience(ExperienceDTO dto)
+        public async Task UpdateExperience(ExperienceDTO dto)
         {
-            return _service.UpdateExperienceAsync(dto);
+            await _service.UpdateExperienceAsync(dto);
+        }
+        [HttpPut]
+        [Route("[action]")]
+        public async Task UpdateJobSeekerMainInfo(MainInfoDTO dto)
+        {
+            await _service.UpdateJobSeekerMainInfoAsync(dto);
+        }
+        [HttpPut]
+        [Route("[action]")]
+        public async Task UpdateJobSeekerSocialInfo(SocialMediaDTO dto)
+        {
+            await _service.UpdateJobSeekerSocialInfoAsync(dto);
+        }
+        [HttpPut]
+        [Route("[action]")]
+        public async Task UpdateJobSeekerContactInfo(ContactDTO dto)
+        {
+            await _service.UpdateJobSeekerContactInfoAsync(dto);
+        }
+        [HttpPut]
+        [Route("[action]")]
+        public async Task UpdateJobSeekerProfileImage(ProfileImageDTO dto)
+        {
+            await _service.UpdateJobSeekerProfileImageAsync(dto);
+        }
+        [HttpPut]
+        [Route("[action]")]
+        public async Task UpdateJobSeekerProfileResume(ProfileResumeDTO dto)
+        {
+            await _service.UpdateJobSeekerProfileResumeFileAsync(dto);
+        }
+        [HttpPut]
+        [Route("[action]")]
+        public async Task UpdateJobSeekerResumeInfo(ResumeDTO dto)
+        {
+            await _service.UpdateJobSeekerResumeInfoAsync(dto);
         }
         [HttpDelete]
         [Route("[action]")]
-        public Task DeleteEducationHistory(int Id)
+        public async Task DeleteEducationHistory(int Id)
         {
-            return _service.DeleteEducationHistoryAsync(Id);
+            await _service.DeleteEducationHistoryAsync(Id);
         }
         [HttpDelete]
         [Route("[action]")]
-        public Task DeleteExperience(int Id)
+        public async Task DeleteExperience(int Id)
         {
-            return _service.DeleteExperienceAsync(Id);
+            await _service.DeleteExperienceAsync(Id);
         }
         [HttpDelete]
         [Route("[action]")]
-        public Task DeleteJobSeekerSkill(int Id)
+        public async Task DeleteJobSeekerSkill(int Id)
         {
-            return _service.DeleteJobSeekerSkillAsync(Id);
+            await _service.DeleteJobSeekerSkillAsync(Id);
         }
 
     }
